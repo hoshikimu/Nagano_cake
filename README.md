@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* hello world
+長野ケーキの通販サイトです。
+3回目
