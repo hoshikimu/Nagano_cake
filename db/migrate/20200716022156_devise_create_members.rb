@@ -6,7 +6,14 @@ class DeviseCreateMembers < ActiveRecord::Migration[5.2]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      
+      t.string :name_family,        null: false, default: ""
+      t.string :name_first,         null: false, default: ""
+      t.string :name_family_kana,   null: false, default: ""
+      t.string :name_first_kana,    null: false, default: ""
+      t.string :postal_code,        null: false, default: ""
+      t.string :address,            null: false, default: ""
+      t.string :phone_number,       null: false, default: ""
+      t.string :is_withdrawal_flag, null: false, default: true
 
       ## Recoverable
       t.string   :reset_password_token
