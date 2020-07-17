@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2020_07_16_121715) do
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name_family", default: "", null: false
+    t.string "name_first", default: "", null: false
+    t.string "name_family_kana", default: "", null: false
+    t.string "name_first_kana", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "is_withdrawal_flag", default: "t", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
