@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+# ログアウトごの遷移先を管理者と顧客でわけたい
+
 
   protected
 

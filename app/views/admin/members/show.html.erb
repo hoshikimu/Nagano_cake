@@ -1,1 +1,43 @@
-<h1>会員詳細画面</h1>
+<%# 会員詳細画面 %>
+<div class="container">
+  <div class="row">
+    <h2><%= @member.name_family %><%= @member.name_first %>さんの会員詳細</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>顧客ID</td>
+          <td><%= @member.id %></td>
+          <td><%= @member.is_withdrawal_flag? %></td>
+        </tr>
+        <tr>
+          <td>氏名</td>
+          <td><%= @member.name_family %><%= @member.name_first %></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td><%= @member.name_family_kana %><%= @member.name_first_kana %></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= @member.postal_code %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @member.address %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @member.phone_number %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @member.email %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= link_to '編集する', edit_admin_member_path(@member),class:" btn btn-primary" %>
+    <%= link_to '注文履歴一覧を見る', member_order_items_path(@member),class:" btn btn-primary" %>
+  </div>
+</div>
+

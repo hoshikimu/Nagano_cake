@@ -1,1 +1,50 @@
-<h1>顧客マイページ</h1>
+<%# 顧客マイページ %>
+
+<h2>マイページ</h2>
+
+<div>
+  <%= link_to '編集する', edit_member_path(current_member.id), class: "btn btn-primary" %>
+  <%= link_to 'パスワードを変更する', edit_member_password_path(current_member.id), class: "btn btn-primary" %>
+</div>
+
+<div class="member-info">
+  <table>
+    <tbody>
+      <tr>
+        <td>氏名</td>
+        <td><%= @member.name_family %><%= @member.name_first %></td>
+      </tr>
+      <tr>
+      <td>カナ</td>
+      <td><%= @member.name_family_kana %><%= @member.name_first_kana %></td>
+      </tr>
+      <tr>
+      <td>郵便番号</td>
+      <td><%= @member.postal_code %></td>
+      </tr>
+      <tr>
+      <td>住所</td>
+      <td><%= @member.address %></td>
+      </tr>
+      <tr>
+      <td>電話番号</td>
+      <td><%= @member.phone_number %></td>
+      </tr>
+      <tr>
+      <td>メールアドレス</td>
+      <td><%= @member.email %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="order-info">
+  <div>
+   <h3>配送先</h3>
+   <%= link_to '一覧を見る', member_shipping_addresses_path(current_member.id), class: "btn btn-primary" %>
+  </div>
+  <div>
+   <h3>注文履歴</h3>
+   <%= link_to '一覧を見る', member_order_items_path(current_member.id), class: "btn btn-primary" %>
+  </div>
+</div>
