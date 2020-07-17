@@ -6,7 +6,19 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">ジャンル追加フォーム</div>
+  <div class="col-xs-6">
+    <%= form_for(@genre, url: admin_genres_path, method: :post) do |f| %>
+      <%= f.label :ジャンル %>
+      <%= f.text_field :name %>
+
+      <label><%= f.radio_button :is_invalid_flag,"有効",checked: true %> 有効 </label>
+      <label><%= f.radio_button :is_invalid_flag,"無効" %> 無効</label>
+
+  	  <%= f.submit "追加", class: "btn btn-large btn-primary add-btn" %>
+
+  	<% end %>
+  	</div>
+  </div>
   <table class="col-xs-6">
   　<thead>
     　  <tr>
@@ -20,13 +32,12 @@
     <tbody>
       <!-- each -->
         <tr>
-          <td>ケーキ
+          <td>ジャンル名
           </td>
           <td>有効</td>
-          <td>編集ボタン</td>
+          <td class="btn btn-large btn-primary edit-btn" >編集する</td>
         </tr>
     <!-- each -->
   </tbody>
 </table>
-</div>
 </div>
