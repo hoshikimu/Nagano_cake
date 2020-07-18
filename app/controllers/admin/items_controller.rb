@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def new
-    
+    @item = Item.new(params_item)
   end
 
   def create
@@ -22,4 +22,7 @@ class Admin::ItemsController < ApplicationController
   def update
     
   end
+
+  private
+  
 end
