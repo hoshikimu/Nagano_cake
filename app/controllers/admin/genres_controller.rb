@@ -6,7 +6,6 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-    is_invalid_flag = "有効"
     @genre.save
     redirect_to request.referer
   end
