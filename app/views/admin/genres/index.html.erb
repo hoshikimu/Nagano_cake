@@ -11,33 +11,47 @@
       <%= f.label :ジャンル %>
       <%= f.text_field :name %>
 
-      <label><%= f.radio_button :is_invalid_flag,"有効",checked: true %> 有効 </label>
-      <label><%= f.radio_button :is_invalid_flag,"無効" %> 無効</label>
+      <%= f.radio_button :is_invalid_flag, "true" ,checked:true %>
+      <%= f.label :is_invalid_flag,:value => "有効" %>
+
+      <%= f.radio_button :is_invalid_flag, "false" %>
+      <%= f.label :is_invalid_flag,:value => "無効" %>
 
   	  <%= f.submit "追加", class: "btn btn-large btn-primary add-btn" %>
 
   	<% end %>
   	</div>
   </div>
-  <table class="col-xs-6">
-  　<thead>
+  <div class="row">
+  <div class="col-xs-4">
+  <div class="table-responsive">
+	<table class="table">
+  　  <thead>
     　  <tr>
-          <th></th>
           <th>ジャンル</th>
           <th>状態</th>
-          <th colspan="3"></th>
+          <th colspan="1"></th>
         </tr>
-    </thead>
+      </thead>
 
     <tbody>
       <!-- each -->
+      <% @genres.each do |genre| %>
         <tr>
-          <td>ジャンル名
+          <td>
+          	<%= genre.name %>
           </td>
-          <td>有効</td>
-          <td class="btn btn-large btn-primary edit-btn" >編集する</td>
+          <td>
+          	<%= genre.is_invalid_flag %>
+          </td>
+          <td>
+          	<%= link_to "編集する", edit_admin_genre_path(genre),class: "btn btn-large btn-primary edit-btn"  %> </td>
         </tr>
+        <% end %>
     <!-- each -->
   </tbody>
 </table>
+</div>
+</div>
+</div>
 </div>
