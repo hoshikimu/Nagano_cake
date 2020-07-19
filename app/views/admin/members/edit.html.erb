@@ -3,47 +3,58 @@
 <div class="edit-member-info container">
   <div class="row">
     <h2><%= @member.name_family %><%= @member.name_first %>さんの登録情報編集</h2>
-    <%= form_for @member do |f| %>
+    <%= form_for(@member, url: admin_member_path ) do |f| %>
       <div class="col-xs-8">
-        <table>
+        <table class="edit-member-table">
           <tbody>
-            <tr>
-              <td>会員ID</td>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">会員ID</td>
               <td><%= @member.id %></td>
             </tr>
-            <tr>
-              <td>氏名</td>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">氏名</td>
               <td>
                 <%= f.text_field :name_family, autofocus: true %>
                 <%= f.text_field :name_first, autofocus: true %>
               </td>
             </tr>
-            <tr>
-              <td>フリガナ</td>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">フリガナ</td>
               <td>
                 <%= f.text_field :name_family_kana, autofocus: true %>
                 <%= f.text_field :name_first_kana, autofocus: true %> 
               </td>
             </tr>
-            <tr>
-              <td>郵便番号</td>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">郵便番号</td>
               <td><%= f.text_field :postal_code, autofocus: true %></td>
             </tr>
-            <tr>
-              <td>住所</td>
-              <td class="edit-member-address"><%= f.text_field :address, autofocus: true %></td>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">住所</td>
+              <td class="edit-member-address"><%= f.text_field :address, autofocus: true, class: "edit-member-address" %></td>
             </tr>
-            <tr>
-              <td>電話番号</td>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">電話番号</td>
               <td><%= f.text_field :phone_number, autofocus: true %></td>
             </tr>
-            <tr>
-              <td>メールアドレス</td>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">メールアドレス</td>
               <td><%= f.text_field :email, autofocus: true %></td>
+            </tr>
+            <tr class="edit-member-row">
+              <td class="col-xs-3">会員ステータス</td>
+              <td>
+                <%= f.radio_button :is_withdrawal_flag, :true, checked: true %>
+                <%= f.label :is_withdrawal_flag, "有効", {value: :true} %>
+                <%= f.radio_button :is_withdrawal_flag, :false %>
+                <%= f.label :is_withdrawal_flag, "退会済み", {value: :false} %>
+              </td>
             </tr>
           </tbody>
         </table>
-        <%= f.submit '編集内容を保存する' , class: "btn btn-primary edit-member-button"%>
+        <div class="edit-member-button">
+           <%= f.submit '編集内容を保存する', class: "btn btn-primary"%>
+        </div>
       <% end %>
       </div>
   </div>

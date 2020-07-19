@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @items = Item.all
+    @items = Item.limit(4)
     @genres = Genre.all
   end
 

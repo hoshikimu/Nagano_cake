@@ -26,7 +26,5 @@ numericality: {
   only_integer: true,
 }
 
-validates :password, presence: true, length: {minimum: 6}
-
 
 end

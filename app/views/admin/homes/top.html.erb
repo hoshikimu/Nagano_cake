@@ -1,7 +1,25 @@
 <%# 管理者トップ ログイン後遷移 %>
-<h2>管理者画面</h2>
+<div class="container col-xs-offset-3">
+  <div class="row">
+    <h2 class="admin-top-title">管理者画面</h2>
+  </div>
+</div>
 
-
-<span>本日の注文件数    </span><%= @order_items.count %><span>    件</span>
+<div class="container col-xs-offset-2">
+  <div class="row">
+    <table>
+      <tr>
+        <th class="admin-top-text col-xs-9">本日の注文件数</th>
+        <td class="admin-top-count col-xs-9">
+          <%= link_to admin_orders_path do %>
+            <%= @orders.count %>
+          <% end %>
+          件
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 <%# 8件はorder_itemsから取得 %>
 <%# ８件に注文履歴一覧へのリンクを設定 %>
+

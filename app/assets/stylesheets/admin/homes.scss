@@ -2,4 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+.homes-top-wrapper {
+  margin-top: 40px;
+}
+
+.homes-top-genre-search {
+  border: 1px solid #000;
+}
+
+.homes-top-genre-title {
+  border: 1px solid #000;
+  text-align: center;
+}
+
+.homes-top-genre-text {
+  padding: 15px;
+}
+
+.homes-top-image {
+  border: 1px solid #000;
+  height: 400px;
+}
+
+.homes-top-text {
+  border: 1px solid #000;
+  height: 200px;
+  margin-top: 100px;
+  padding: 50px;
+  font-size: 20px;
+}
+
+.homes-top-under-menu > h2 {
+  font-weight: bold;
+}
+
+.homes-top-under-image {
+
+}
 // 管理者用トップページ用のCSS
+.admin-top-title {
+  margin-bottom: 30px;
+}
+
+.admin-top-text {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.admin-top-count {
+  font-weight: bold;
+  font-size: 25px;
+}
