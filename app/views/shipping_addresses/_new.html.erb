@@ -1,0 +1,26 @@
+<div class="table">
+  <%= form_for [member,shipping] do |f| %>
+    <table>
+      <tbody>
+          <tr>
+            <td>郵便番号（ハイフンなし）</td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td>宛名</td>
+            <td><%= f.text_field :receiver %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><%= f.submit "#{submit}", class: "btn #{color}" %></td>
+          </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

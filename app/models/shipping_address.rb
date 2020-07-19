@@ -1,3 +1,3 @@
 class ShippingAddress < ApplicationRecord
-  belongs_to :member
+  belongs_to :member, optional: true
 end

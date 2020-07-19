@@ -1,1 +1,6 @@
-<h1>配送先編集ページを表示</h1>
+<div>
+  <h1>配送先編集</h1>
+
+  <%= render partial: 'new', locals: { member: @member, shipping: @shipping, submit: "編集する", color: "btn-primary" } %>
+
+</div>
