@@ -8,10 +8,11 @@
           <td>顧客ID</td>
           <td><%= @member.id %></td>
           <%# なぜかうまくできないポイント %>
-            <% if member.is_withdrawal_flag == "t" %>
+            <% if @member.is_withdrawal_flag == "t" %>
             <td>有効</td>
             <% else %>
             <td>退会済み</td>
+            <% end %>
         </tr>
         <tr>
           <td>氏名</td>
