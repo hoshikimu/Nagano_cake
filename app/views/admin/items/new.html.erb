@@ -1,26 +1,34 @@
-<h1>商品新規登登録</h1>
-<%= form_for(@item, url: new_admin_item_path) do |f| %>
-  <div class="form-group">
-    <label for="name">商品名</label>
-    <%= f.text_field :name, class:"form-control" %>
+<div class="row">
+  <div class="col-xs-3 col-xs-offset-3">
+    <h2>商品新規登録</h2>
+    <%= form_for(@item_new, url: admin_items_path) do |f| %>
+      <div class="form-group">
+        <label for="name">商品画像</label>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="form-group">
+        <label for="name">商品名</label>
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="introduction">商品説明</label>
+        <%= f.text_area :introduction, size: "10x5", class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="genre">ジャンル</label>
+        <%= f.select :genre_id, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ", 4]], {include_blank: "選択してください"}, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="price">税抜価格</label>
+        <div class="form-inline">
+          <%= f.text_field :price, class:"form-control" %><span> 円</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="is_sale_status">販売ステータス</label>
+        <%= f.select :genre_id, [["販売中", true], ["売り切れ", false]], {},class:"form-control" %>
+      </div>
+      <%= f.submit "新規登録", class:"btn btn-success" %>
+    <% end %>
   </div>
-  <div class="form-group">
-    <label for="introduction">商品説明</label>
-    <%= f.text_field :introduction, class:"form-control" %>
-  </div>
-  <div class="form-group">
-    <label for="genre">ジャンル</label>
-    <%= f.select :genre_id, [["ケーキ", "ケーキ"], ["プリン", "プリン"], ["焼き菓子", "焼き菓子"], ["キャンディ", "キャンディ"]] %>
-  </div>
-  <div class="form-group">
-    <label for="price">税抜価格</label>
-    <%= f.text_field :price, class:"form-control" %><<span>円</span>>
-  </div>
-  <div class="form-group">
-    <label for="is_sale_status">販売ステータス</label>
-    <%= f.select :genre_id, [["販売中", "販売中"], ["売り切れ", "売り切れ"] %>
-  </div>
-<% end %>
-
-
-aaaaaaaaa
+</div>
