@@ -1,3 +1,51 @@
 // Place all the styles related to the members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// 顧客マイページ用CSS
+.my-page-sub-title {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.my-page-sub-title  span {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+table td {
+  height: 30px;
+}
+
+.sub-title-cell {
+  background: #eee;
+}
+
+.order-info-button {
+  margin-top: 30px;
+}
+
+// 顧客用登録情報更新ページ用CSS
+
+
+// 顧客用退会ページ用CSS
+.withdrwal {
+  text-align: center;
+}
+
+.withdrwal-title {
+  margin-top: 100px;
+  font-weight: bold;
+}
+
+.withdrwal-text {
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+.withdrwal-button {
+  margin: 10px;
+}
+

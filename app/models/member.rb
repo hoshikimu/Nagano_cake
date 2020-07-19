@@ -13,6 +13,7 @@ validates :name_first, presence: true
 validates :name_family_kana, presence: true
 validates :name_first_kana, presence: true
 validates :email, presence: true
+# validates :is_withdrawal_flag, inclusion: { in: [true, false] }
 # numericality => only_integerで整数のみ、
 # ０以上１０未満のみ
 validates :postal_code, presence: true, 
@@ -26,5 +27,6 @@ numericality: {
 }
 
 validates :password, presence: true, length: {minimum: 6}
+
 
 end
