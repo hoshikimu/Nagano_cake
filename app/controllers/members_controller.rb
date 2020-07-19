@@ -10,7 +10,7 @@ class MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to member_path(current_member)
+      redirect_to member_path(@member)
     else
       @member= Member.find(params[:id])
       render :edit
@@ -29,9 +29,9 @@ class MembersController < ApplicationController
 
 def member_params
   params.require(:member).permit(
-    :name_family, 
-    :name_first, 
-    :name_family_kana, 
+    :name_family,
+    :name_first,
+    :name_family_kana,
     :name_first_kana,
     :postal_code,
     :address,

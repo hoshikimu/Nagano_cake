@@ -32,7 +32,8 @@ def member_params
     :postal_code,
     :address,
     :phone_number,
-    :email
+    :email,
+    :is_withdrawal_flag
   )
 end
 
