@@ -12,8 +12,11 @@ Rails.application.routes.draw do
   resources :members do
     resources :cart_items
     resources :orders
+    resources :order_items
     resources :shipping_addresses
   end
+
+  get 'withdrawal' => 'members#withdrawal'
   
   resources :items
   
