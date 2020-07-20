@@ -13,7 +13,9 @@
   <% if admin_signed_in? %>
     <%# 管理者ログイン後 商品一覧、会員一覧、注文履歴一覧、ジャンル一覧、ログアウト %>
       <div class="container">
-        <div class="logo-image">logo</div>
+        <%= link_to root_path do %>
+          <div class="logo-image"><%= image_tag "logo.jpg" %></div>
+        <% end %>
           <div class="header-right row col-xs-offset-5">
             <%= link_to '商品一覧', items_path, class: "btn btn-primary" %>
             <%= link_to '会員一覧', admin_members_path, class: "btn btn-primary" %>
@@ -25,7 +27,9 @@
       <% elsif member_signed_in? %>
     <%# 顧客ログイン後 マイページ、商品一覧、カート、ログアウト %>
       <div class="container">
-        <div class="logo-image">logo(200x50)</div>
+          <%= link_to root_path do %>
+            <div class="logo-image"><%= image_tag "logo.jpg" %></div>
+          <% end %>
           <div class="header-right row col-xs-offset-5">
             <span class="col-xs-4">ようこそ、 <%= current_member.name_family %>さん！</span>
             <%= link_to 'マイページ', member_path(current_member.id), class: "btn btn-primary head-nav-item" %>
@@ -37,7 +41,9 @@
       <% else %>
     <%# 顧客ログイン前 About、商品一覧、新規登録、ログイン（管理者ログイン前も）%>
       <div class="container">
-        <div class="logo-image">logo</div>
+          <%= link_to root_path do %>
+            <div class="logo-image"><%= image_tag "logo.jpg" %></div>
+          <% end %>
           <div class="header-right row col-xs-offset-5">
           <%= link_to 'About', about_path, class: "btn btn-primary" %>
           <%= link_to '商品一覧', items_path, class: "btn btn-primary" %>

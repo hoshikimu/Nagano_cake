@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   devise_for :members, controllers: {
     registrations: 'members/registrations',
-    sessions: 'members/sessions'
+    sessions: 'members/sessions',
+    passwords: 'members/passwords'
   }
 
   resources :members do

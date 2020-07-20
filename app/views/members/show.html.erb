@@ -5,7 +5,7 @@
     <div class="my-page-sub-title">
       <span>登録情報</span>
       <%= link_to '編集する', edit_member_path(@member.id), class: "btn btn-primary" %>
-      <%= link_to 'パスワードを変更する', edit_member_password_path(current_member), class: "btn btn-primary" %>
+      <%= link_to 'パスワードを変更する', edit_member_password_path, class: "btn btn-primary" %>
     </div>
     <div class="member-info">
       <table class="table-bordered col-xs-6">

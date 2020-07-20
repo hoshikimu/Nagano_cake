@@ -63,16 +63,21 @@
 // ヘッダー
 header {
   width: 100%;
-  height: 140px;
+  height: 150px;
   border-bottom: 4px inset orange;
   margin-bottom: 30px;
 }
 
 .logo-image {
-  margin-top: 20px;
-  width: 200px;
-  height: 50px;
-  background: gray;
+  margin-top: 30px;
+  width: 250px;
+  height: 80px;
+  border: 2px solid orange;
+  border-radius: 8px;
+}
+
+.logo-image :hover {
+  opacity: 0.6;
 }
 
 .header-right {
