@@ -1,1 +1,30 @@
-<h1>商品一覧表示画面</h1>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h2>商品一覧</h2>
+    <%= link_to new_admin_item_path do %>
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    <% end %>
+    <table cellpadding="5" class="table table-hover">
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+      <% @items.each do |item| %>
+        <tr>
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.price.to_s(:delimited) %></td>
+            <td><%= item.genre_id %></td>
+            <% if item.is_sale_status == true %>
+              <td>販売中</td>
+            <% else %>
+              <td>販売停止中</td>
+            <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
