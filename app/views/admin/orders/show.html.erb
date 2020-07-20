@@ -1,8 +1,71 @@
-<!-- admin order show -->
+<!-- admin order show兼edit -->
 <div class="container">
   <div class="row">
     <div class="col-xs-1">
-      <h1>注文履歴詳細兼edit</h1>
+      <h1>注文履歴詳細</h1>
+    </div>
   </div>
+  <div class="row">
+<!-- cssで.table-noborder {
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+} -->
+  	<table class="table table-noborder">
+        <tr>
+          <th>購入者</th><td>リンク付き名前</td><td></td>
+        </tr>
+        <tr>
+          <th>配送先</th><td　colspan="2">郵便番号・住所<br>
+          	宛名
+          </td　colspan="2">
+        </tr>
+        <tr>
+          <th>支払方法</th><td>支払方法</td><td></td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th><td>ステータス</td><td>更新ボタン</td>
+        </tr>
+      </table>
+  </div>
+  <div class ="row">
+  	<div class="col-xs-8">
+      <table class="table">
+        <thead>
+          <tr class="active">
+           <td>商品名</td>
+            <td>単価（税込）</td>
+            <td>数量</td>
+            <td>小計</td>
+            <td>製作ステータス</td>
+            <td></td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td>税込価格</td>
+            <td>数量</td>
+            <td>小計</td>
+            <td>ステータス</td>
+            <td>更新ボタン</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-4">
+
+      <table class="table table-noborder">
+        <tr>
+          <th>商品合計</th><td>円</td>
+        </tr>
+        <tr>
+          <th>送料</th><td>円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th><td>円</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

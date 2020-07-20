@@ -1,1 +1,64 @@
-<h1>注文履歴詳細を表示</h1>
+<!-- member注文履歴詳細 -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1">
+      <h1>注文履歴詳細</h1>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="col-xs-5">
+  	  <strong>注文情報</strong>
+      <table class="table table-bordered">
+        <tr>
+          <th class="action">注文日</th><td>日付</td><td></td>
+        </tr>
+        <tr>
+          <th class="action">配送先</th><td　colspan="2">郵便番号・住所<br>
+          	宛名
+          </td　colspan="2">
+        </tr>
+        <tr>
+          <th class="action">支払方法</th><td>支払方法</td><td></td>
+        </tr>
+        <tr>
+          <th class="action">ステータス</th><td>注文ステータス</td><td></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-xs-3">
+      <strong>請求情報</strong>
+      <table class="table table-bordered">
+        <tr>
+          <th class="action">商品合計</th><td>金額</td>
+        </tr>
+        <tr>
+          <th class="action">配送料</th><td>金額</td>
+        </tr>
+        <tr>
+          <th class="action"><strong>ご請求額</strong></th><td>金額</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="active">
+          <td>商品</td>
+          <td>単価（税込）</td>
+          <td>個数</td>
+          <td>小計</td>
+        </tr>
+      </thead>
+
+      <tbody>
+       <tr>
+         <td>商品名</td>
+         <td>金額</td>
+         <td>個数</td>
+         <td>小計金額</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
