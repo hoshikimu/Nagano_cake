@@ -15,7 +15,8 @@
         </tr>
       </thead>
       <tbody>
-          <% @cart_items.each do |cart_item| %>
+        <% @cart_items.each do |cart_item| %>
+          <% if cart_item.member_id == current_member.id %>
             <tr>
               <td><%= cart_item.item.name %></td>
               <td><%= cart_item.item.price %></td>
@@ -25,11 +26,12 @@
             </tr>
             <% @total = @total + cart_item.item.price * cart_item.quantity %>
           <% end %>
+        <% end %>
       </tbody>
     </table>
   </div>
   <div class="main-bottom">
-    <div class="shopping"><%= link_to '買い物を続けない', member_cart_items_path, method: :get, class: "btn btn-primary" %></div>
+    <div class="shopping"><%= link_to '買い物を続ける', items_path, class: "btn btn-primary" %></div>
     <div class="table">
       <table>
         <tbody>
