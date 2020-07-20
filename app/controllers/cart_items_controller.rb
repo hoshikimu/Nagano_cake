@@ -17,8 +17,8 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    # ShippingAddress.find_by(id: params[:id], member_id: params[:member_id]).destroy
-    # redirect_to action: 'index'
+    CartItem.find_by(id: params[:id], member_id: params[:member_id]).destroy
+    redirect_to action: 'index'
   end
 
   def destroy_all
