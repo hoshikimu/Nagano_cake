@@ -1,7 +1,7 @@
 <div class="">
   <div class="main-top">
     <h1>ショッピングカート</h1>
-    <div class="destroy-all"><%= link_to 'カートを空にしない', member_cart_items_path, method: :get, class: "btn btn-danger" %>
+    <div class="destroy-all"><%= link_to 'カートを空にする', member_cart_all_item_path, method: :delete, class: "btn btn-danger" %>
   </div>
   <div class="main">
     <table>
