@@ -4,6 +4,15 @@
 
 
 // 顧客用トップページCSS
+.homes-top-under-menu-title {
+  margin-top: 15px;
+}
+
+.homes-top-under-menu {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
 
 // 顧客AboutページCSS
 
@@ -26,4 +35,6 @@
   margin-top: 20px;
   border-radius: 8px;
 }
+
+
 

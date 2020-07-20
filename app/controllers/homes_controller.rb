@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
   def top
-    @items = Item.limit(4)
+    # Item.all ではなく 4つだけにしたい
+    @items = Item.order("RANDOM()").limit(4)
     @genres = Genre.all
   end
 

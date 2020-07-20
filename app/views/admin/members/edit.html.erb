@@ -44,8 +44,8 @@
             <tr class="edit-member-row">
               <td class="col-xs-3">会員ステータス</td>
               <td>
-                <%= f.radio_button :is_withdrawal_flag, :true %>
-                <%= f.label :is_withdrawal_flag, "有効", {value: :true} %>
+                <%= f.radio_button :is_withdrawal_flag, :t, checked: true %>
+                <%= f.label :is_withdrawal_flag, "有効", {value: :true}%>
                 <%= f.radio_button :is_withdrawal_flag, :false %>
                 <%= f.label :is_withdrawal_flag, "退会済み", {value: :false} %>
               </td>

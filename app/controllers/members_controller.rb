@@ -21,12 +21,12 @@ class MembersController < ApplicationController
   end
 
   def withdrawal
-    
   end
 
-  def destroy
+  def hide
     @member = Member.find(params[:id])
-    @member.destroy
+    @member.update(is_withdrawal_flag: false)
+    reset_session
     redirect_to items_path
   end
 

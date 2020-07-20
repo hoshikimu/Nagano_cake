@@ -26,5 +26,9 @@ numericality: {
   only_integer: true,
 }
 
+def active_for_authentication?
+  super && (self.is_withdrawal_flag == "t" )
+end
+
 
 end
