@@ -24,18 +24,26 @@
 .homes-top-image {
   border: 1px solid #000;
   height: 400px;
+  background:  linear-gradient( 135deg,
+   rgba(246, 255, 0, 0.3), rgba(255, 0, 161, 0.3)), image-url('top-image2.jpg');
+  background-size: cover;
+  background-position: center;
+
 }
 
 .homes-top-text {
-  border: 1px solid #000;
   height: 200px;
   margin-top: 100px;
   padding: 50px;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  font-family: oblique;
 }
 
 .homes-top-under-menu > h2 {
   font-weight: bold;
+
 }
 
 .homes-top-under-image {
