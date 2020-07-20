@@ -10,25 +10,31 @@
   border-top: 0px !important;
   border-bottom: 0px !important;
 } -->
+　　<%= form_for(@order) do |f| %>
   	<table class="table table-noborder">
         <tr>
-          <th>購入者</th><td>リンク付き名前</td><td></td>
+          <th>購入者</th><td>,<%= order.name %>リンクつける</td><td></td>
         </tr>
         <tr>
-          <th>配送先</th><td　colspan="2">郵便番号・住所<br>
-          	宛名
+          <th>配送先</th><td　colspan="2">郵便番号<%= order.postal_code %>・住所<%= order.address %><br>
+          	宛名<%= order.receiver %>
           </td　colspan="2">
         </tr>
         <tr>
-          <th>支払方法</th><td>支払方法</td><td></td>
+          <th>支払方法</th><td><%= order.payment_method %></td><td></td>
         </tr>
-        <tr>
-          <th>注文ステータス</th><td>ステータス</td><td>更新ボタン</td>
+         <tr>
+          <th>注文ステータス</th>
+            <td><%= f.select :production_status, [ ["入金待ち",0], ["入金確認",1], ["制作中",2], ["発送準備中",3], ["発送済み",4], include_blank: false ] %>
+            </td>
+            <td><%= f.submit "更新", class:"btn btn-primary" %></td>
         </tr>
       </table>
+      <% end %>
   </div>
   <div class ="row">
   	<div class="col-xs-8">
+      <%= form_for(@order_item) do |f| %>
       <table class="table">
         <thead>
           <tr class="active">
@@ -43,27 +49,30 @@
 
         <tbody>
           <tr>
-            <td>商品名</td>
-            <td>税込価格</td>
-            <td>数量</td>
-            <td>小計</td>
-            <td>ステータス</td>
-            <td>更新ボタン</td>
+            <td><%= order_item.name %></td>
+            <td><%= order_item.tax_included_price %></td>
+            <td><%= order_item.quantity %></td>
+            <td>%= order_item.item.price * corder_item.quantity %></td>
+            <td><%= f.select :production_status, [ ["着手不可",0], ["製作待ち",1], ["制作中",2], ["製作完了",3], include_blank: false ] %>
+            </td>
+            <td><%= f.submit "更新", class:"btn btn-primary" %></td>
+
           </tr>
         </tbody>
       </table>
+      <% end %>
     </div>
     <div class="col-xs-4">
 
       <table class="table table-noborder">
         <tr>
-          <th>商品合計</th><td>円</td>
+          <th>商品合計</th><td><%= %>円</td>
         </tr>
         <tr>
-          <th>送料</th><td>円</td>
+          <th>送料</th><td><%= @order.postage %>円</td>
         </tr>
         <tr>
-          <th>請求金額合計</th><td>円</td>
+          <th>請求金額合計</th><td><%= @order.total %>円</td>
         </tr>
       </table>
     </div>

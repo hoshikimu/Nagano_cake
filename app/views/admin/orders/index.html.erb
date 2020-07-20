@@ -17,15 +17,16 @@
               <td>注文ステータス</td>
             </tr>
           </thead>
-
+         <% @orders.each do |order| %>
           <tbody>
             <tr>
-              <td>リンク付き日時</td>
-              <td>氏名</td>
+              <td><%= order.created_at %>リンクつける</td>
+              <td><%= order.name %></td>
               <td>個数</td>
-              <td>ステータス</td>
+              <td><%= order.order_status %></td>
             </tr>
           </tbody>
+          <% end %>
         </table>
         <%= paginate @orders %>
       </div>

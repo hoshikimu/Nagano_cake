@@ -50,15 +50,16 @@
           <td>小計</td>
         </tr>
       </thead>
-
+    <% @order_items.each do |order_item| %>
       <tbody>
        <tr>
-         <td>商品名</td>
-         <td>金額</td>
-         <td>個数</td>
-         <td>小計金額</td>
+         <td><%= order_item.name %></td>
+         <td>金額<%= order_item.item.price %></td>
+         <td>個数<%= order_item.quantity %></td>
+         <td>小計金額<%= order_item.item.price * order_item.quantity %></td>
         </tr>
       </tbody>
+    <% end %>
     </table>
   </div>
 </div>
