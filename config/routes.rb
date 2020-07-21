@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :members do
     resources :cart_items
+    delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_all_item'
     resources :orders
     resources :order_items
     resources :shipping_addresses
