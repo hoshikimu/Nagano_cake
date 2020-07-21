@@ -1,1 +1,40 @@
-<h1>新規注文情報入力ページを表示</h1>
+<!-- 新規注文情報入力ページを表示 -->
+<div class ="container">
+  <div class="row">
+    <div class="col-xs-2 col-xs-offet-1">
+   	<h3>注文情報入力</h3>
+    </div>
+    <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
+  	  <div class="row">
+        <div class="col-xs-3">
+          <%= f.label :支払方法 %><br>
+           <%= f.radio_button :payment_method, 0, {checked: true} %>
+          <%= f.label :クレジットカード %><br>
+          <%= f.radio_button :payment_method, 1, {} %>
+          <%= f.label :郵便振込 %><br>
+        </div>
+
+        <div class="col-xs-10">
+          <%= f.label :お届け先 %><br>
+          <%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所<br>
+          <%= @member.postal_code %>
+          <%= @member.address %><br>
+          <%= @member.full_name %><br>
+
+          <%= f.radio_button :add, 2, style: "display: inline-block" %>登録住所から選択<br>
+          <%= f.collection_select :address, @member.receiver, :id, :address %><br>
+
+          <%= f.radio_button :add, 3 %>新しいお届け先<br>
+            <%= f.fields_for :new_add do |new_add| %>
+              <p>郵便番号(ハイフンなし)</p>
+              <%= new_add.text_field :postal_code, class: 'form-control' %><br>
+              <p>住所</p>
+              <%= new_add.text_field :address, class: 'form-control' %><br>
+              <p>宛名</p>
+              <%= new_add.text_field :receiver, class: 'form-control' %><br>
+            <% end %>
+  	    </div>
+  	  <%= f.submit "確認画面へ進む", class: "btn btn-large btn-primary add-btn" %>
+  	<% end %>
+  </div>
+</div>
