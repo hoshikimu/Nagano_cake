@@ -1,59 +1,68 @@
 <%# 顧客 新規会員登録画面 %>
-<div class="container">
+<div class="container col-xs-8 col-xs-offset-3">
   <div class="row">
-    <h3 class="col-xs-offset-1">新規会員登録</h3>
+    <h3>新規会員登録</h3>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "members/shared/error_messages", resource: resource %>
-      <table class="table">
+      <table>
         <tbody>
           <tr>
-            <td>名前</td>
-            <td>（ 姓 ）  <%= f.text_field :name_family, autofocus: true %></td>
-            <td>（ 名 ）  <%= f.text_field :name_first, autofocus: true %></td>
+            <th>名前</th>
+            <td class="sign-up-small-cell">(姓)</td>
+            <td><%= f.text_field :name_family, autofocus: true %></td>
+            <td class="sign-up-small-cell">(名)</td>
+            <td><%= f.text_field :name_first, autofocus: true %></td>
           </tr>
           <tr>
-            <td>フリガナ</td>
-            <td>（セイ）<%= f.text_field :name_family_kana, autofocus: true %></td>
-            <td>（メイ）<%= f.text_field :name_first_kana, autofocus: true %></td>
+            <th>フリガナ</th>
+            <td class="sign-up-small-cell">(セイ)</td>
+            <td><%= f.text_field :name_family_kana, autofocus: true %></td>
+            <td class="sign-up-small-cell">(メイ)</td>
+            <td><%= f.text_field :name_first_kana, autofocus: true %></td>
           </tr>
           <tr>
-            <td>メールアドレス</td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            <th>メールアドレス</th>
+            <td class="sign-up-small-cell"></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email"%></td>
           </tr>
           <tr>
-          <td>郵便番号（ハイフンなし）</td>
+          <th>郵便番号（ハイフンなし）</th>
+          <td class="sign-up-small-cell"></td>
           <td><%= f.text_field :postal_code, autofocus: true %></td>
           </tr>
           <tr>
-            <td>住所</td>
-            <td><%= f.text_field :address, autofocus: true %></td>
+            <th>住所</th>
+            <td class="sign-up-small-cell"></td>
+            <td colspan="3"><%= f.text_field :address, autofocus: true, class: "sign-up-address" %></td>
           </tr>
           <tr>
-            <td>電話番号（ハイフンなし）</td>
+            <th>電話番号（ハイフンなし）</th>
+            <td class="sign-up-small-cell"></td>
             <td><%= f.text_field :phone_number, autofocus: true %></td>
           </tr>
           <tr>
-            <td>パスワード（６文字以上）</td>
+            <th>パスワード（６文字以上）</th>
+            <td class="sign-up-small-cell"></td>
             <td><%= f.password_field :password %></td>
           </tr>
           <tr>
-            <td>パスワード（確認用）</td>
-            <td>
-              <%= f.password_field :password, autocomplete: "current-password" %>
-            </td>
+            <th>パスワード（確認用）</th>
+            <td class="sign-up-small-cell"></td>
+            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
           </tr>
         </tbody>
       </table>
-      <div class="actions">
-        <%= f.submit "新規登録", class:"btn btn-success col-xs-2 col-xs-offset-5" %>
+      <br>
+      <br>
+      <div class="member-sign-up-actions">
+        <%= f.submit "新規登録", class:"btn btn-success col-xs-3 col-xs-offset-3" %>
       </div>
     <% end %>
   </div>
 </div>
-
-<div class="container col-xs-offset-1">
+<div class="container col-xs-6 col-xs-offset-2 sign-up-message">
   <div class="row">
     <h3>既に登録済みの方</h3>
-    <span class="col-xs-offset-1"><%= link_to 'こちら', new_member_session_path %>からログインしてください。</span>
+    <span class="col-xs-offset-"><%= link_to 'こちら', new_member_session_path %>からログインしてください。</span>
   </div>
 </div>

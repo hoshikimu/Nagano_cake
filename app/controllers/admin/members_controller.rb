@@ -1,6 +1,9 @@
 class Admin::MembersController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def index
-    @members = Member.all
+    @members = Member.page(params[:page])
   end
 
   def show
@@ -14,7 +17,7 @@ class Admin::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to member_path
+      redirect_to admin_members_path
     else
       @member= Member.find(params[:id])
       render :edit
