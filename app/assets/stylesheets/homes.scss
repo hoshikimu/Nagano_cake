@@ -4,11 +4,21 @@
 
 
 // 顧客用トップページCSS
+.homes-top-under-menu-title {
+  margin-top: 15px;
+}
+
+.homes-top-under-menu {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
 
 // 顧客AboutページCSS
 
 .home-about-title {
   text-align: center;
+  text-decoration: underline;
 }
 
 .home-about-text {
@@ -17,8 +27,14 @@
 
 .home-about-image {
   width: 600px;
-  height: 200px;
-  background: gray;
+  height: 300px;
+  background:  image-url('top-image2.jpg');
+  background-position: center;
+  background-size: cover;
   margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 8px;
 }
+
+
 

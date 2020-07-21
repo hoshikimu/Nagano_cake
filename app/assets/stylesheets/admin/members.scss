@@ -10,17 +10,54 @@
   border-radius: 6px;
 }
 
+.admin-show-info {
+  height: 60px;
+}
+
+.admin-show-table {
+  font-weight: bold;
+}
+
 .admin-show-button {
   margin: 15px;
 }
 
+.admin-flag-true {
+  background: #6699ff;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid;
+  margin-top: 25px;
+}
+
+.admin-flag-false {
+  background: #ff3300;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid;
+  margin-top: 25px;
+}
+
 // 管理者用 会員編集ページ用CSS
-.edit-member-address
+.edit-member-address {
+  width: 400px;
+}
+
+.edit-member-table {
+  margin-bottom: 30px;
+}
 
 .edit-member-button {
   margin-top: 30px;
 }
 
+.edit-member-row {
+  height: 50px;
+}
 
 
 

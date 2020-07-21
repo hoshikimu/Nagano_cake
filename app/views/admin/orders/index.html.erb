@@ -22,7 +22,7 @@
             <tr>
               <td><%= order.created_at %>リンクつける</td>
               <td><%= order.member.name %></td>
-              <td>個数</td>
+              <td><%= order.order_items.quantity %>個数</td>
               <td><%= order.order_status %></td>
             </tr>
           </tbody>

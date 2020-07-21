@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   devise_for :members, controllers: {
     registrations: 'members/registrations',
-    sessions: 'members/sessions'
+    sessions: 'members/sessions',
+    passwords: 'members/passwords'
   }
 
   resources :members do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     resources :order_items
     resources :shipping_addresses
   end
+  put "/members/:id/hide" => "members#hide", as: 'member_hide'
 
   get 'withdrawal' => 'members#withdrawal'
   
