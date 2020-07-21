@@ -1,21 +1,33 @@
 class CartItemsController < ApplicationController
-  def cart_items
-    
+  def index
+    @cart_items = CartItem.all
+    @total = 0
+
   end
 
   def create
-
-  end
-
-  def destroy
-    
-  end
-
-  def destroy_all
-    
+    # @item = Item.find(params[:id])
+    # @cart_item = CartItem.new(cart_item_params)
+    # @cart_item.save
+    # redirect_to action: 'index'
   end
 
   def update
     
   end
+
+  def destroy
+    CartItem.find_by(id: params[:id], member_id: params[:member_id]).destroy
+    redirect_to action: 'index'
+  end
+
+  def destroy_all
+    member = Member.find(params[:member_id])
+    member.cart_items.destroy_all
+    redirect_to action: 'index'
+  end
+
+  # private
+  # params.require(:cart_item).permit(:quantity)
+
 end
