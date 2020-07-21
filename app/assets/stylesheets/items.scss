@@ -1,3 +1,42 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// .ii {
+//   border: 1px solid red;
+// }
+
+// [ec]
+// index
+.genre-table {
+  width: 150px;
+  margin-top: 20px;
+}
+
+.genre-table th, td{
+  text-align: center;
+}
+
+.genre-table thead, tbody {
+  border: 1px solid black;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-box {
+  margin: 10px;
+  // border: 1px solid red;
+}
+
+// show
+.item-show {
+  display: flex;
+  align-items: center;
+}
+
+.item_image_show {
+  margin-top: 20px; 
+  margin-right: 20px;
+}

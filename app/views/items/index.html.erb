@@ -1,1 +1,19 @@
-<h1>商品一覧ページ</h1>
+<div class="row">
+  <div class="col-xs-2 col-xs-offset-1">
+    <%= render "items/genre_search", genres: @genres %>
+  </div>
+  <div class="col-xs-6">
+    <h2>商品一覧（全<%= @items.count %>件）</h2>
+    <div class="items">
+      <% @items.each do |item| %>
+        <div class="item-box">
+          <%= link_to item_path(item) do %>
+            <%= attachment_image_tag item, :image, format: "jpeg", width:"150", height:"100", fallback: "no_image.jpg" %>
+          <% end %>
+          <h4><%= link_to item.name, item_path(item) %></h4>
+          <p><span>¥</span><%= item.price.to_s(:delimited) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
