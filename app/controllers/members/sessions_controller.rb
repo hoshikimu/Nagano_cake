@@ -23,7 +23,7 @@ class Members::SessionsController < Devise::SessionsController
   protected
 
   def reject_member
-    @member = Member.find_by(email: params[:member][:email].downcase)
+    @member = Member.find_by(email: params[:member][:email])
     if @member
       if (@member.valid_password?(params[:member][:password]) && (@member.active_for_authentication? == false))
         flash[:error] = "退会済みです。"
