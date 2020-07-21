@@ -2,7 +2,8 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
     @total = 0
-
+    @cart_item_member = CartItem.where(member_id: current_member.id)
+    @member = Member.find(params[:member_id])
   end
 
   def create
@@ -13,7 +14,8 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    
+    CartItem.find(params[:id]).update(cart_item_params)
+    redirect_to action: 'index'
   end
 
   def destroy
@@ -27,7 +29,9 @@ class CartItemsController < ApplicationController
     redirect_to action: 'index'
   end
 
-  # private
-  # params.require(:cart_item).permit(:quantity)
+  private
+  def cart_item_params    
+    params.require(:cart_item).permit(:quantity)
+  end
 
 end
