@@ -26,7 +26,9 @@ numericality: {
   only_integer: true,
 }
 
-validates :password, presence: true, length: {minimum: 6}
+def active_for_authentication?
+  super && (self.is_withdrawal_flag == "t" )
+end
 
 
 end

@@ -1,4 +1,7 @@
 class MembersController < ApplicationController
+
+  before_action :authenticate_member!
+
   def show
     @member = Member.find(params[:id])
   end
@@ -18,11 +21,13 @@ class MembersController < ApplicationController
   end
 
   def withdrawal
-    
   end
 
-  def destroy
-    
+  def hide
+    @member = Member.find(params[:id])
+    @member.update(is_withdrawal_flag: false)
+    reset_session
+    redirect_to items_path
   end
 
   private
