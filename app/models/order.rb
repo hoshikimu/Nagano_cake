@@ -8,7 +8,7 @@ class Order < ApplicationRecord
 #オーダーアイテムを複数追加するためのメソッド
   accepts_nested_attributes_for :order_items
 
-  enum payment_method: [ :クレジットカード, :銀行振込 ]
-  enum production_status: [ :着手不可, :製作待ち, :制作中, :製作完了 ]
-
+  enum payment_method: [ :クレジットカード, :銀行振込]
+  # enum production_status: [ :cannot_start, :Awaiting, :in_the_making , :copleted ]
+  enum order_status: [ :入金待ち, :入金確認, :制作中, :発送準備中, :発送済み]
 end

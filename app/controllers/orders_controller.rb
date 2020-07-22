@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.page(params[:page]).reverse_order
+    @order_items = OrderItem.all
   end
 
   def create
@@ -55,6 +56,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+  	@order_items = OrderItem.all
     @order = Order.find(params[:id])
     if @order.member_id != current_member.id
       redirect_back(fallback_location: root_path)
@@ -64,7 +66,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    
+
   end
 
 
@@ -98,9 +100,9 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-  	params.require(:order).permit(:member_id, :order_status, :postal_code,
-  	 :receiver, :address, :postage, :payment_method, :total, :created_at, :updated_at,
-  	 order_items_attributes: [:order_id, :item_id, :quantity, :tax_inculuded_price, :production_status])
+    params.require(:order).permit(:member_id, :order_status, :postal_code,
+     :receiver, :address, :postage, :payment_method, :total, :created_at, :updated_at,
+     order_items_attributes: [:order_id, :item_id, :quantity, :tax_inculuded_price, :production_status])
   end
 
 end

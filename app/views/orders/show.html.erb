@@ -1,8 +1,8 @@
 <!-- member注文履歴詳細 -->
 <div class="container">
   <div class="row">
-    <div class="col-xs-1">
-      <h1>注文履歴詳細</h1>
+    <div class="col-xs-3">
+      <h4>注文履歴詳細</h4>
     </div>
   </div>
   <div class="row">
@@ -10,19 +10,19 @@
   	  <strong>注文情報</strong>
       <table class="table table-bordered">
         <tr>
-          <th class="action">注文日</th><td>日付</td><td></td>
+          <th class="active">注文日</th><td colspan="2"><%= @order.created_at %></td>
         </tr>
         <tr>
-          <th class="action">配送先</th><td　colspan="2"><%= @order.postal_code %><br>
+          <th class="active">配送先</th><td colspan="2"><%= @order.postal_code %><br>
           	<%= @order.address %><br>
           	<%= @order.receiver %>
-          </td　colspan="2">
+          </td>
         </tr>
         <tr>
-          <th class="action">支払方法</th><td><%= @order.payment_method %></td><td></td>
+          <th class="active">支払方法</th><td colspan="2"><%= @order.payment_method %></td>
         </tr>
         <tr>
-          <th class="action">ステータス</th><td><%= @order.order_status %></td><td></td>
+          <th class="active">ステータス</th><td colspan="2"><%= @order.order_status %></td>
         </tr>
       </table>
     </div>
@@ -30,18 +30,19 @@
       <strong>請求情報</strong>
       <table class="table table-bordered">
         <tr>
-          <th class="action">商品合計</th><td>金額</td>
+          <th class="active">商品合計</th><td>金額<%= %></td>
         </tr>
         <tr>
-          <th class="action">配送料</th><td>金額</td>
+          <th class="active">配送料</th><td><%= @order.postage %></td>
         </tr>
         <tr>
-          <th class="action"><strong>ご請求額</strong></th><td>金額</td>
+          <th class="active">ご請求額</th><td>金額<%= %></td>
         </tr>
       </table>
     </div>
   </div>
   <div class="row">
+  	<h3>注文内容</h3>
     <table class="table table-bordered">
       <thead>
         <tr class="active">
@@ -54,7 +55,7 @@
     <% @order_items.each do |order_item| %>
       <tbody>
        <tr>
-         <td><%= order_item.name %></td>
+         <td><%= order_item.item.name %></td>
          <td>金額<%= order_item.item.price %></td>
          <td>個数<%= order_item.quantity %></td>
          <td>小計金額<%= order_item.item.price * order_item.quantity %></td>
