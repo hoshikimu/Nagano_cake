@@ -13,12 +13,13 @@
           <th class="action">注文日</th><td>日付</td><td></td>
         </tr>
         <tr>
-          <th class="action">配送先</th><td　colspan="2">郵便番号・住所<br>
-          	宛名
+          <th class="action">配送先</th><td　colspan="2"><%= @order.postal_code %><br>
+          	<%= @order.address %><br>
+          	<%= @order.receiver %>
           </td　colspan="2">
         </tr>
         <tr>
-          <th class="action">支払方法</th><td><%= order.payment_method %></td><td></td>
+          <th class="action">支払方法</th><td><%= @order.payment_method %></td><td></td>
         </tr>
         <tr>
           <th class="action">ステータス</th><td><%= @order.order_status %></td><td></td>
