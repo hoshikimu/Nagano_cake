@@ -2,7 +2,7 @@
   <div class="col-xs-8 col-xs-offset-2">
     <h2>商品一覧</h2>
     <%= link_to new_admin_item_path do %>
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-plus add-btn" aria-hidden="true"></span>
     <% end %>
     <table cellpadding="5" class="table table-hover">
       <tr>
@@ -15,9 +15,9 @@
       <% @items.each do |item| %>
         <tr>
             <td><%= item.id %></td>
-            <td><%= item.name %></td>
+            <td><%= link_to item.name, admin_item_path(item) %></td>
             <td><%= item.price.to_s(:delimited) %></td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.genre.name %></td>
             <% if item.is_sale_status == true %>
               <td>販売中</td>
             <% else %>
@@ -26,5 +26,6 @@
         </tr>
       <% end %>
     </table>
+    <%= paginate @items %>
   </div>
 </div>

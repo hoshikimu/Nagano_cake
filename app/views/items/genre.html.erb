@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-2 col-xs-offset-1">
+    <%= render "items/genre_search", genres: @genres %>
+  </div>
+  <div class="col-xs-6">
+    <h2><%= @genre.name %>一覧（全<%= @genre_items.count %>件）</h2>
+    <div class="items">
+      <% @genre_items.each do |genre_item| %>
+        <div class="item-box">
+          <%= link_to item_path(genre_item) do %>
+            <%= attachment_image_tag genre_item, :image, format: "jpeg", width:"150", height:"100", fallback: "no_image.jpg" %>
+          <% end %>
+          <h4><%= link_to genre_item.name, item_path(genre_item) %></h4>
+          <p><span>¥</span><%= genre_item.price.to_s(:delimited) %></p>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @genre_items %>
+  </div>
+</div>
