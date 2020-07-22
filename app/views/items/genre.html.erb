@@ -3,9 +3,9 @@
     <%= render "items/genre_search", genres: @genres %>
   </div>
   <div class="col-xs-6">
-    <h2><%= @genre.name %>一覧（全<%= @genre.items.count %>件）</h2>
+    <h2><%= @genre.name %>一覧（全<%= @genre_items.count %>件）</h2>
     <div class="items">
-      <% @genre.items.each do |genre_item| %>
+      <% @genre_items.each do |genre_item| %>
         <div class="item-box">
           <%= link_to item_path(genre_item) do %>
             <%= attachment_image_tag genre_item, :image, format: "jpeg", width:"150", height:"100", fallback: "no_image.jpg" %>
@@ -15,5 +15,6 @@
         </div>
       <% end %>
     </div>
+    <%= paginate @genre_items %>
   </div>
 </div>
