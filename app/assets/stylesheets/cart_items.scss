@@ -1,3 +1,70 @@
 // Place all the styles related to the cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cart-items-container {
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.cart-items-main-top {
+  display: flex;
+  justify-content: space-around;
+  line-height: 60px;
+  padding: 0 10px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.cart-items-main-top h1 {
+  font-size: 24px;
+  background-color: #eeeeee;
+  display: inline-block;
+}
+
+.cart-items-table {
+  margin: 0 auto;
+  margin-bottom: 0;
+}
+
+.cart-items-table tr,.cart-items-table th,.cart-items-table td {
+  padding: 5px 10px;
+  border: solid 1px black;
+}
+
+.cart-items-tr th {
+  background-color: #eeeeee;
+}
+
+.cart-items-main-bottom {
+  display: flex;
+  justify-content: space-around;
+  line-height: 60px;
+  margin: 0 auto;
+}
+
+.cart-items-total-table {
+  padding: 15px;
+}
+
+.cart-items-total-table td {
+  line-height: 30px;
+  padding: 0px 10px;
+  border: solid 1px black;
+}
+
+.cart-items-total-table table {
+  margin: 0;
+}
+
+.cart-items-total-price {
+  background-color: #eeeeee;
+}
+
+.cart-items-next {
+  text-align: center;
+}
+
+#cart-items-next-btn {
+  padding: 10px 40px;
+}
