@@ -35,6 +35,6 @@ Rails.application.routes.draw do
     get '/homes/top' => 'homes#top'
   end
 
-
+  get '/:genre_id/items' => 'items#genre', as: 'genre_item'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

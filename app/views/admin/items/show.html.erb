@@ -3,7 +3,7 @@
 </div>
 <div class="row">
   <div class="col-xs-3 col-xs-offset-2">
-    <%= attachment_image_tag @item, :image, format: "jpeg", width:"250", height:"200", fallback: "no_image.jpg" %>
+    <%= attachment_image_tag @item, :image, format: "jpeg", width:"280", height:"200", fallback: "no_image.jpg" %>
   </div>
   <div class="col-xs-5">
     <div>
@@ -13,7 +13,7 @@
       <p>商品説明<span><%= @item.introduction %></span></p>
     </div>
     <div>
-      <p>ジャンル<span><%= @item.genre_id %></span></p>
+      <p>ジャンル<span><%= @item.genre.name %></span></p>
     </div>
     <div>
       <p>税込価格（税抜価格）<span><%= @item_tax_included_price.to_s(:delimited) %>（<%= @item.price.to_s(:delimited) %>） 円</span>
