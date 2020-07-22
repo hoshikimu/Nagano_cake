@@ -1,6 +1,8 @@
-<div>
-  <h1>配送先編集</h1>
-
-  <%= render partial: 'new', locals: { member: @member, shipping: @shipping, submit: "編集する", color: "btn-primary" } %>
-
+<div class="shipping-contents">
+  <div class="shipping-container">
+    <div class="sh-form shipping-edit">
+      <h1>配送先編集</h1>
+      <%= render partial: 'new', locals: { member: @member, shipping: @shipping, submit: "編集する", color: "btn-primary" } %>
+    </div>
+  </div>
 </div>
