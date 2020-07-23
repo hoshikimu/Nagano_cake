@@ -2,6 +2,7 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
     @total = 0
+    @tax = 1.1
     @cart_item_member = CartItem.where(member_id: current_member.id)
     @member = Member.find(params[:member_id])
   end
