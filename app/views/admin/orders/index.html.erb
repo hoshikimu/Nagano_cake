@@ -21,8 +21,12 @@
           <tbody>
           	<% @orders.each do |order| %>
             <tr>
-              <td class="col-xs-2"><%= link_to l order.created_at, url: admin_order_path(order) %></td>
-              <td class="col-xs-2"><%#= order.member.name_family + order.member.name_fist %>name</td>
+              <td class="col-xs-2">
+                <%= link_to admin_order_path(order) do %>
+                  <%= l order.created_at %>
+                <% end %>
+                </td>
+              <td class="col-xs-2"><%= order.member.name_family %><%= order.member.name_first %></td>
               <td class="col-xs-2"><%#= order.order_item.quantity %>個数</td>
               <td class="col-xs-2"><%= order.order_status %></td>
             </tr>

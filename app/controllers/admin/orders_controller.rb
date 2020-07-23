@@ -1,22 +1,26 @@
 class Admin::OrdersController < ApplicationController
   def edit
-    
+    @production_status = OrderItem.production_status.find(params[:id])
   end
 
   def update
-    
+    @order = Order.find(params[:id])
+    @order_item =OrderItem.find(params[:id])
+    @order.update(order_params)
+    redirect_to request.referer
   end
 
   def index
     @orders = Order.page(params[:page]).reverse_order
-    @order_item =OrderItem.all
+    @order_items =OrderItem.all
+    # @full_name = @member.name_family + @member.name_first
   end
 
   def show
     @order = Order.find(params[:id])
+    @order_items =OrderItem.all
   end
 
-  private
   private
   def order_params
     params.require(:order).permit(:member_id, :order_status, :postal_code,
