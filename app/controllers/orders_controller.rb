@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_action :destroy_all, only: [:completion]
+
   def index
     @orders = Order.page(params[:page]).reverse_order
     @order_items = OrderItem.all
@@ -92,6 +94,14 @@ class OrdersController < ApplicationController
         @order.shipping = params[:order][:new_add][:address]
         @order.receiver = params[:order][:new_add][:receiver]
     end
+  end
+
+  def about
+    @total = 0
+    @shipping_cost = 800
+    @cart_items_member = CartItem.where(member_id: current_member.id)
+    @member = Member.find(params[:member_id])
+    @tax = 1.1
   end
 
   def completion
