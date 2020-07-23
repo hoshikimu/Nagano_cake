@@ -1,1 +1,34 @@
-<h1>注文履歴一覧</h1>
+<!-- admin order index -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-1">
+      <h3>注文履歴一覧</h3>
+    </div>
+  </div>
+      <br>
+  <div class="row">
+      <div class="col-xs-10">
+        <table class="table">
+          <thead>
+            <tr class="active">
+              <td class="col-xs-2">購入日時</td>
+              <td>購入者</td>
+              <td>注文個数</td>
+              <td>注文ステータス</td>
+            </tr>
+          </thead>
+         <% @orders.each do |order| %>
+          <tbody>
+            <tr>
+              <td><%= order.created_at %>リンクつける</td>
+              <td><%= order.member.name %></td>
+              <td><%= order.order_items.quantity %>個数</td>
+              <td><%= order.order_status %></td>
+            </tr>
+          </tbody>
+          <% end %>
+        </table>
+        <%= paginate @orders %>
+      </div>
+  </div>
+</div>
