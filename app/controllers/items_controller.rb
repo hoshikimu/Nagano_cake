@@ -18,8 +18,4 @@ class ItemsController < ApplicationController
     @genres = Genre.all
   end
 
-  # private
-  # def cart_item_params
-  #   params.require(:cart_item).permit(:quantity, :item_id, :member_id)
-  # end
 end
