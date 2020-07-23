@@ -31,5 +31,13 @@ def active_for_authentication?
   super && (self.is_withdrawal_flag == "t" )
 end
 
+def self.search(search)
+  if search
+    Member.where(['name LIKE ?', "%#{search}%"])
+  else
+    Member.all
+  end
+end
+
 
 end
