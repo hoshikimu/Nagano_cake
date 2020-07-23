@@ -25,11 +25,6 @@
             <%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-primary" %>
             <%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-primary" %>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-primary" %>
-          <%# <%= form_tag(search_path, method: :get) do %> %>
-            <%# <%= text_field_tag (:word) %> %>
-            <%# <%= select_tag 'range', options_for_select([['会員'=>'member'],['商品'=>'item']]) %> %>
-              <%# <%= select(@search_content, :search_method, [["前方一致", "forward_match"],["後方一致","backward_match"],["完全一致","perfect_match"],["部分一致","partial_match"]]) %> %>
-            <%# <%= submit_tag 'Search' %> %>
           <%= form_tag(search_path, method: :get) do %>
             <%= text_field_tag'search[content]' %>
              <%= select_tag 'search[model]', options_for_select([["会員", "1"], ["商品", "2"]]) %>
