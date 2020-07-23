@@ -12,14 +12,12 @@ class ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
 
+
+
   def genre
     @genre = Genre.find(params[:genre_id])
     @genre_items = @genre.items.where(is_sale_status: true).page(params[:page]).per(12)
     @genres = Genre.all
   end
 
-  # private
-  # def cart_item_params
-  #   params.require(:cart_item).permit(:quantity, :item_id, :member_id)
-  # end
 end

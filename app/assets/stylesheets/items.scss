@@ -12,11 +12,11 @@
   margin-top: 20px;
 }
 
-.genre-table th,.genre-table td{
+.genre-table th, .genre-table td{
   text-align: center;
 }
 
-.genre-table thead,.genre-table tbody {
+.genre-table thead, .genre-table tbody {
   border: 1px solid black;
 }
 
@@ -49,4 +49,15 @@
 .item_image_show {
   margin-top: 20px; 
   margin-right: 20px;
+}
+
+.item-detail {
+  width: 300px;
+  height: 200px;
+}
+
+.items-btn-area {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
 }

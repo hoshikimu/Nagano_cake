@@ -1,4 +1,30 @@
 <%# 検索結果 %>
 <h2>検索結果</h2>
 
-<%= @dates.name_family %>
+<% if @member_or_item == "1"%>
+    <h1>会員</h1>
+    <table>
+        <% @member.each do |member| %>
+        <thead>
+            <tr>
+                <th></th>
+                <th><%= member.name %> </th>
+            </tr>
+        </thead>
+        <% end %>
+    </table>
+ 
+<% elsif @member_or_item == "2" %>
+    <h2>商品</h2>
+    <table>
+    <% @item.each do |item| %>
+        <thead>
+            <tr>
+                <th></th>
+                <th><%= item.title %></th>
+            </tr>
+        </thead>
+    <% end %>
+    </table>
+<% else %>
+<% end %>

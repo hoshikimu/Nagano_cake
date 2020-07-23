@@ -18,7 +18,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-
+  def destroy_all
+    member = Member.find(params[:member_id])
+    member.cart_items.destroy_all
+  end
 
   protected
 
