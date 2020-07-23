@@ -24,7 +24,7 @@
                 <%= attachment_image_tag cart_item.item.image, :image, format: "jpeg", width:"50", height:"40", fallback: "no_image.jpg" %>
                 <%= cart_item.item.name %>
               </td>
-              <td><%= cart_item.item.price.to_s(:delimited) %> 円</td>
+              <td><%= (cart_item.item.price * @tax).round.to_s(:delimited) %> 円</td>
                 <td>
                   <%= form_for [@member, cart_item] do |f| %>
                     <%= f.text_field :quantity, size: "3" %>
@@ -32,12 +32,11 @@
                   <% end %>
                 </td>
               <td>
-                <% sub_total = cart_item.item.price * cart_item.quantity %>
-                <%= sub_total.to_s(:delimited) %> 円
+                <%= (cart_item.item.price * cart_item.quantity * @tax).round.to_s(:delimited) %> 円
               </td>
               <td><%= link_to '削除する', member_cart_item_path(cart_item.member,cart_item), method: :delete, class: "btn btn-danger" %></td>
             </tr>
-            <% @total = @total + cart_item.item.price * cart_item.quantity %>
+            <% @total = @total + cart_item.item.price * cart_item.quantity * @tax %>
           <% end %>
         </tbody>
       </table>
@@ -48,7 +47,7 @@
         <table>
           <tbody>
             <td class="cart-items-total-price">合計金額</td>
-            <td><%= @total.to_s(:delimited) %> 円</td>
+            <td><%= @total.round.to_s(:delimited) %> 円</td>
           </tbody>
         </table>
       </div>

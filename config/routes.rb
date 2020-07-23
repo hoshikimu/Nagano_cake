@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     sessions: 'members/sessions',
     passwords: 'members/passwords'
   }
-
+  
   resources :members do
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_all_item'
@@ -18,14 +18,14 @@ Rails.application.routes.draw do
     resources :shipping_addresses
   end
   put "/members/:id/hide" => "members#hide", as: 'member_hide'
-
+  
   get 'withdrawal' => 'members#withdrawal'
   
   resources :items
   
   root 'homes#top'
   get '/about' => 'homes#about'
-
+  
   namespace :admin do 
     resources :genres
     resources :order_items
@@ -35,8 +35,9 @@ Rails.application.routes.draw do
     get '/homes/top' => 'homes#top'
   end
 
-  get '/members/:member_id/orders/about' => 'orders#about', as: 'order_about'
-  get '/members/:member_id/orders/completion' => 'orders#completion', as: 'order_completion'
+  get '/members/:member_id/about' => 'orders#about', as: 'order_about' 
+  get '/members/:member_id/completion' => 'orders#completion', as: 'member_order_completion' 
   get '/:genre_id/items' => 'items#genre', as: 'genre_item'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
