@@ -8,19 +8,13 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.member_id = current_member.id  #member_id
-    if @cart_item.save
+    cart_item = CartItem.new(cart_item_params)
+    cart_item.member_id = current_member.id
+    if cart_item.save
       respond_to do |format|
-        format.html { redirect_to item_path(@cart_item.item_id), notice: "カートに保存されました。" }
-      # redirect_to member_cart_items_path
+        format.html { redirect_to item_path(cart_item.item_id), notice: "カートに保存されました。" }
       end
-    # else
-    #   respond_to do |format|
-    #     format.html { redirect_to item_path(@cart_item.id), notice: "保存できませんでした。" }
-    #   end
     end
-    # redirect_to item_path(@cart_item.id)
   end
 
   def update
