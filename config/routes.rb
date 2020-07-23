@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     get '/homes/top' => 'homes#top'
   end
 
+  get '/members/:member_id/orders/about' => 'orders#about', as: 'order_about'
+  get '/members/:member_id/orders/completion' => 'orders#completion', as: 'order_completion'
   get '/:genre_id/items' => 'items#genre', as: 'genre_item'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
