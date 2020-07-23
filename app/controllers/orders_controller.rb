@@ -99,6 +99,7 @@ class OrdersController < ApplicationController
     @shipping_cost = 800
     @cart_items_member = CartItem.where(member_id: current_member.id)
     @member = Member.find(params[:member_id])
+    @tax = 1.1
   end
 
   def completion

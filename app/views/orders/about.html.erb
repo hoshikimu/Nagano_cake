@@ -19,7 +19,7 @@
               <%= attachment_image_tag cart_item.item.image, :image, format: "jpeg", width:"50", height:"40", fallback: "no_image.jpg" %>
               <%= cart_item.item.name %>
             </td>
-            <td><%= cart_item.item.price.to_s(:delimited) %> 円</td>
+            <td><%= (cart_item.item.price * @tax).round.to_s(:delimited) %> 円</td>
             <td><%= cart_item.quantity %> 個</td>
             <td>
               <% sub_total = cart_item.item.price * cart_item.quantity %>
@@ -63,5 +63,5 @@
       <h3>お届け先</h3>
     </div>
   </div>
-  <div class="cart-items-next"><%= link_to '注文情報確定', member_order_completion_path, class: "btn btn-success", id: "cart-items-next-btn" %></div>
+  <div class="cart-items-next"><%= link_to '購入を確定する', member_order_completion_path, class: "btn btn-success", id: "cart-items-next-btn" %></div>
 </div>
