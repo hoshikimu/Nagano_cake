@@ -10,19 +10,19 @@
   	  <strong>注文情報</strong>
       <table class="table table-bordered">
         <tr>
-          <th class="active">注文日</th><td colspan="2"><%= @order.created_at %></td>
+          <th class="active">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <th class="active">配送先</th><td colspan="2"><%= @order.postal_code %><br>
+          <th class="active">配送先</th><td><%= @order.postal_code %><br>
           	<%= @order.address %><br>
           	<%= @order.receiver %>
           </td>
         </tr>
         <tr>
-          <th class="active">支払方法</th><td colspan="2"><%= @order.payment_method %></td>
+          <th class="active">支払方法</th><td><%= @order.payment_method %></td>
         </tr>
         <tr>
-          <th class="active">ステータス</th><td colspan="2"><%= @order.order_status %></td>
+          <th class="active">ステータス</th><td><%= @order.order_status %></td>
         </tr>
       </table>
     </div>
@@ -30,7 +30,7 @@
       <strong>請求情報</strong>
       <table class="table table-bordered">
         <tr>
-          <th class="active">商品合計</th><td>金額<%= %></td>
+          <th class="active">商品合計</th><td>金額<%= @sum_all %></td>
         </tr>
         <tr>
           <th class="active">配送料</th><td><%= @order.postage %></td>
@@ -52,13 +52,15 @@
           <td>小計</td>
         </tr>
       </thead>
-    <% @order_items.each do |order_item| %>
+    <% @order.order_items.each do |order_item| %>
       <tbody>
        <tr>
          <td><%= order_item.item.name %></td>
-         <td>金額<%= order_item.item.price %></td>
-         <td>個数<%= order_item.quantity %></td>
-         <td>小計金額<%= order_item.item.price * order_item.quantity %></td>
+         <td><% tax_icluded_price = order_item.item.price.*1.1 %>
+         	<%= tax_icluded_price.to_s(:delimited)%>
+         </td>
+         <td><%= order_item.quantity %></td>
+         <td><%= @sum_all = tax_icluded_price * order_item.quantity %></td>
         </tr>
       </tbody>
     <% end %>
