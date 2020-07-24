@@ -14,7 +14,6 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.page(params[:page]).reverse_order
     @order_items =OrderItem.all
     @total_quantity = 0
-    order = Order.find(1)
 
   end
 
