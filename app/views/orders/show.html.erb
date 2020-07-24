@@ -26,22 +26,7 @@
         </tr>
       </table>
     </div>
-    <div class="col-xs-3">
-      <strong>請求情報</strong>
-    </div>
-    <div class="col-xs-4">
-      <table class="table table-bordered">
-        <tr>
-          <th class="active">商品合計</th><td><%= @subtotal_price %></td>
-        </tr>
-        <tr>
-          <th class="active">配送料</th><td><%= @order.postage %></td>
-        </tr>
-        <tr>
-          <th class="active">ご請求額</th><td><%= @total %></td>
-        </tr>
-      </table>
-    </div>
+    <!-- 本当はここに -->
   </div>
   <div class="row">
   	<div class="col-xs-3">
@@ -59,24 +44,41 @@
             <td>小計</td>
           </tr>
         </thead>
-      <% @order.order_items.each do |order_item| %>
+      <% @order_items.each do |order_item| %>
         <tbody>
          <tr>
            <td>
            	<%= order_item.item.name %>
            	</td>
            <td>
-         	<%= @tax_icluded_price %>
+         	<%= order_item.tax_included_price %>
            </td>
            <td>
            	<%= order_item.quantity %>
            </td>
            <td>
-           	<%= @subtotal_price %>
+           	<%= order_item.tax_included_price * order_item.quantity %>
            </td>
           </tr>
          </tbody>
+         <% @total = @total + order_item.tax_included_price * order_item.quantity %>
        <% end %>
+      </table>
+    </div>
+    <div class="col-xs-3">
+      <strong>請求情報</strong>
+    </div>
+    <div class="col-xs-4">
+      <table class="table table-bordered">
+        <tr>
+          <th class="active">商品合計</th><td><%= @total.floor.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th class="active">配送料</th><td><%= @order.postage %></td>
+        </tr>
+        <tr>
+          <th class="active">ご請求額</th><td><%= (@total + @postage).floor.to_s(:delimited) %></td>
+        </tr>
       </table>
     </div>
   </div>

@@ -19,4 +19,5 @@ class Order < ApplicationRecord
 
   # @total = @subtotal_price * quantity + postage
 
+
 end

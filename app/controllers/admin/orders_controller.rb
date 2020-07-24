@@ -13,13 +13,17 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.page(params[:page]).reverse_order
     @order_items =OrderItem.all
-    # @full_name = @member.name_family + @member.name_first
+    @total_quantity = 0
+    order = Order.find(1)
+
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_items =OrderItem.all
-  end
+    @order_items = @order.order_items
+    @total = 0
+    @postage = 800
+end
 
   private
   def order_params

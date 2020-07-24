@@ -3,10 +3,12 @@ class OrdersController < ApplicationController
   before_action :destroy_all, only: [:completion]
 
   def index
-  	@member = Member.find(params[:member_id])
-  	@orders = @member.orders
+    @member = Member.find(params[:member_id])
+    @orders = @member.orders
     # @orders = Order.page(params[:page]).reverse_order
     @order_items = OrderItem.all
+    @total = 0
+    @postage = 800
   end
 
   def create
@@ -61,6 +63,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
+    @total = 0
+    @postage = 800
     if @order.member_id != current_member.id
       redirect_back(fallback_location: root_path)
       flash[:alert] = "アクセスに失敗しました。"
@@ -69,7 +74,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    
+
   end
 
 
