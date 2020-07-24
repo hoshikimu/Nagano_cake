@@ -1,6 +1,11 @@
 <!-- admin order show兼edit -->
 <div class="container">
   <div class="row">
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <div class="col-xs-3 col-xs-offset-1">
       <h4>注文履歴詳細</h4>
     </div>

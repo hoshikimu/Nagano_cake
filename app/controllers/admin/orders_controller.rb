@@ -7,6 +7,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_item =OrderItem.find(params[:id])
     @order.update(order_params)
+     flash[:notice] = "注文ステータスを更新しました！"
     redirect_to request.referer
   end
 
