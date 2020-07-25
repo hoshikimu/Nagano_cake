@@ -6,8 +6,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item_new = Item.new(item_params)
-    @item_new.save
-    redirect_to admin_item_path(@item_new)
+    if @item_new.save
+      redirect_to admin_item_path(@item_new)
+    else
+      @genres = Genre.all
+      render :new
+    end
   end
 
   def index
@@ -31,6 +35,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item)
     else
+      @genres = Genre.all
       render :edit
     end
   end
