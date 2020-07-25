@@ -23,6 +23,7 @@ class Admin::OrdersController < ApplicationController
     @order_items = @order.order_items
     @total = 0
     @postage = 800
+    @member =Member.find(params[:id])
 end
 
   private
