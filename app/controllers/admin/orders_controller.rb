@@ -23,16 +23,15 @@ class Admin::OrdersController < ApplicationController
     @order_items = @order.order_items
     @total = 0
     @postage = 800
-    @member =Member.find(params[:id])
+    # @member =Member.find(params[:id])
 end
 
   private
   def order_params
-
     params.require(:order).permit(:member_id, :order_status, :postal_code,
      :receiver, :address, :postage, :payment_method, :total, :created_at, :updated_at,
      order_items_attributes: [:order_id, :item_id, :quantity, :tax_inculuded_price, :production_status],
      members_attributes: [:name_family, :name_first ])
-
   end
+
 end
