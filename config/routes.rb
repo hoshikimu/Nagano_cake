@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -34,6 +33,8 @@ Rails.application.routes.draw do
     resources :items
     get '/homes/top' => 'homes#top'
   end
+
+  get 'search' => 'search#search'
   
   get '/:genre_id/items' => 'items#genre', as: 'genre_item'
   get '/members/:member_id/about' => 'orders#about', as: 'order_about' 

@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   # validates :name, presence: true
   # validates :introduction, presence: true, length: {maximum: 200}
   # validates :price, presence: true
+
 end
