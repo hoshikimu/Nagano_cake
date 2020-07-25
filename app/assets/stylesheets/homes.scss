@@ -14,6 +14,14 @@
   margin-top: 20px;
 }
 
+.homes-box {
+  width: 23%;
+  flex: wrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 // 顧客AboutページCSS
 
 .home-about-title {
