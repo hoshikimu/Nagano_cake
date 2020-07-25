@@ -9,13 +9,22 @@ class ApplicationController < ActionController::Base
         when Admin
           admin_homes_top_path
         when Member
-          items_path
+          root_path
       end
   end
 
 # 新規会員登録後はhomes#topへ飛ぶように
   def after_sign_up_path_for(resource)
     root_path
+  end
+
+  def after_sign_out_path_for(resource)
+      case resource
+        when :admin
+          new_admin_session_path
+        when :member
+          root_path
+      end
   end
 
   def destroy_all

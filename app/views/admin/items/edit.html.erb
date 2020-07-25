@@ -1,5 +1,12 @@
 <div class="row">
-  <h2 class="col-xs-3 col-xs-offset-2">商品編集</h2>
+  <div class="col-xs-3 col-xs-offset-2">
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages.each do |message| %>
+        <li class="text-danger"><%= message %></li>
+      <% end %>
+    <% end %>
+    <h2>商品編集</h2>
+  </div>
 </div>
 <div class="row">
   <%= form_for(@item, url: admin_item_path, method: :patch) do |f| %>

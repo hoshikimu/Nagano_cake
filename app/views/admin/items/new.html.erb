@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-xs-3 col-xs-offset-3">
     <h2>商品新規登録</h2>
+    <% if @item_new.errors.any? %>
+      <% @item_new.errors.full_messages.each do |message| %>
+        <li class="text-danger"><%= message %></li>
+      <% end %>
+    <% end %>
     <%= form_for(@item_new, url: admin_items_path) do |f| %>
       <div class="form-group">
         <label for="name">商品画像</label>

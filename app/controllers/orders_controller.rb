@@ -11,56 +11,6 @@ class OrdersController < ApplicationController
     @postage = 800
   end
 
-  def create
-    if current_member.cart_items.exists?
-      @order = Order.new(order_params)
-      @order.member_id = current_member.id
-
-      # 住所のラジオボタン選択に応じて引数を調整
-      @add = params[:order][:add].to_i
-      case @add
-        when 1
-          @order.postal_code = @member.postal_code
-          @order.shipping = @member.address
-          @order.receiver = full_name(@member)
-        when 2
-          @order.postal_code = params[:order][:postal_code]
-          @order.shipping = params[:order][:address]
-          @order.receiver = params[:order][:receiver]
-        when 3
-          @order.postal_code = params[:order][:postal_code]
-          @order.shipping = params[:order][:address]
-          @order.receiver = params[:order][:receiver]
-      end
-
-      @order.save
-      # shippingで住所モデル検索、該当データなければ新規作成
-      if Shipping.find_by(address: @order.address).nil?
-        @address = Shipping.new
-        @address.postal_code = @order.postal_code
-        @address.address = @order.address
-        @address.receiver = @order.receiver
-        @address.member_id = current_member.id
-        @address.save
-      end
-
-      # cart_itemsの内容をorder_itemsに新規登録
-      current_member.cart_items.each do |cart_item|
-        order_item = @order.order_items.build
-        order_item.order_id = @order.id
-        order_item.item_id = cart_item.item_id
-        order_item.quantity = cart_item.quantity
-        order_item.tax_inculuded_price = cart_item.item.price
-        order_item.save
-        cart_item.destroy #order_itemに情報を移したらcart_itemは消去
-      end
-
-      render :completion
-    else
-      redirect_to member_top_path, danger: 'カートが空です。'
-    end
-  end
-
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
@@ -73,41 +23,77 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+
+    @order_new = Order.new
+    @member = Member.find(current_member.id)
+    @member_shipping_addresses = @member.shipping_addresses
 
   end
 
 
   def confirm
-    @order = Order.new
-    @cart_items = current_member.cart_items
-    @order.payment_method = params[:order][:payment_method]
-    # 住所のラジオボタン選択に応じて引数を調整
-    @add = params[:order][:add].to_i
-    case @add
-      when 1
-        @order.postal_code = @member.postal_code
-        @order.shipping = @member.address
-        @order.receiver = @member.name_family + @member.name_first
-      when 2
-        @shipping_address = params[:order][:address].to_i
-        @address = Shipping.find(@shipping_address)
-        @order.postal_code = @address.postal_code
-        @order.shipping = @address.address
-        @order.receiver = @address.receiver
-      when 3
-        @order.postal_code = params[:order][:new_add][:postal_code]
-        @order.shipping = params[:order][:new_add][:address]
-        @order.receiver = params[:order][:new_add][:receiver]
-    end
+    
   end
 
   def about
+    @order_new = Order.new
+    @order = Order.new
     @total = 0
     @shipping_cost = 800
     @cart_items_member = CartItem.where(member_id: current_member.id)
     @member = Member.find(params[:member_id])
     @tax = 1.1
+
+    @payment_method_enum = params[:payment_method]
+    case @payment_method_enum
+    when "0"
+      @payment_method = "銀行振込"
+    when "1"
+      @payment_method = "クレジットカード"
+    end
+
+    button_selected = params[:selected]
+    case button_selected
+    when "a"
+      @postal_code = params[:postal_code]
+      @address = params[:address]
+      @receiver = params[:name_family] + params[:name_first]
+    when "b"
+      if @shipping_addresses_id == nil
+        @member = Member.find(current_member.id)
+        @member_shipping_addresses = @member.shipping_addresses
+        flash[:danger] = "登録済みの住所がありません。"
+        render :new
+      else
+        @shipping_address_id = params[:shipping_address]
+        @postal_code = @member.shipping_addresses.find(@shipping_address_id).postal_code
+        @address = @member.shipping_addresses.find(@shipping_address_id).address
+        @receiver = @member.shipping_addresses.find(@shipping_address_id).receiver
+      end
+    when "c"
+      if @postal_code == nil || @address == nil || @receiver == nil
+        @member = Member.find(current_member.id)
+        @member_shipping_addresses = @member.shipping_addresses
+        flash[:danger] = "お届け先が未記入です。"
+        render :new
+      else
+        @postal_code = params[:p]
+        @address = params[:a]
+        @receiver = params[:r]
+      end
+    end
+  end
+
+  def create
+    @order_new = Order.new(order_params)
+    @order_new.member_id = current_member.id
+    if @order_new.save
+      redirect_to member_order_completion_path
+    else
+      @member = Member.find(current_member.id)
+      @member_shipping_addresses = @member.shipping_addresses
+      render :new
+    end
   end
 
   def completion
@@ -116,9 +102,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-  	params.require(:order).permit(:member_id, :order_status, :postal_code,
-  	 :receiver, :address, :postage, :payment_method, :total, :created_at, :updated_at,
-  	 order_items_attributes: [:order_id, :item_id, :quantity, :tax_inculuded_price, :production_status])
+  	params.require(:order).permit(:order_status, :postal_code, :receiver, :address, :postage, :payment_method, :total)
   end
 
 end
