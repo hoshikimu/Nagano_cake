@@ -1,5 +1,15 @@
 <div class="shipping-contents">
   <div class="shipping-container">
+    <div id="error_explanation">
+      <% if @shipping.errors.any? %>
+        <h3><%= @shipping.errors.count %>件のerrorが発生しました</h3>
+        <ul>
+          <% @shipping.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
     <div class="sh-form shipping-new">
       <h1>配送先登録／一覧</h1>
       <%= render partial: 'new', locals: { member: @member, shipping: @shipping, submit: "登録する", color: "btn-success" } %>
