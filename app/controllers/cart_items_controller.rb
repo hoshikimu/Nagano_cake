@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
   def index
+    @cart_item = CartItem.find(params[:member_id])
     @cart_items = CartItem.all
     @total = 0
     @tax = 1.1
@@ -18,8 +19,17 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    CartItem.find(params[:id]).update(cart_item_params)
-    redirect_to action: 'index'
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to action: 'index'
+    else
+      @cart_items = CartItem.all
+      @total = 0
+      @tax = 1.1
+      @cart_item_member = CartItem.where(member_id: current_member.id)
+      @member = Member.find(params[:member_id])
+      render :index
+    end
   end
 
   def destroy

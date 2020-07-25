@@ -1,5 +1,15 @@
 <div class="cart-items">
   <div class="cart-items-container">
+    <div id="error_explanation">
+      <% if @cart_item.errors.any? %>
+        <h3><%= @cart_item.errors.count %>件のerrorが発生しました</h3>
+        <ul>
+          <% @cart_item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
     <div class="cart-items-main-top">
       <h1>ショッピングカート</h1>
       <div class="destroy-all">
