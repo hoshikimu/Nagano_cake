@@ -15,6 +15,10 @@ class CartItemsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to item_path(cart_item.item_id), notice: "カートに保存されました。" }
       end
+    else
+      respond_to do |format|
+        format.html { redirect_to item_path(cart_item.item_id), notice: "1個以上を選択して下さい。" }
+      end
     end
   end
 
