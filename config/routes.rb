@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   get '/members/:member_id/about' => 'orders#about', as: 'order_about' 
+  post '/members/:member_id' => 'orders#create', as: 'order_create'
   get '/members/:member_id/completion' => 'orders#completion', as: 'member_order_completion' 
   get '/:genre_id/items' => 'items#genre', as: 'genre_item'
   
