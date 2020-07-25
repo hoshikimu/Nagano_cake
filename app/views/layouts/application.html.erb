@@ -12,18 +12,29 @@
   <%# ヘッダー項目 左ロゴ（root_path), 右各種リンク%>
   <% if admin_signed_in? %>
     <%# 管理者ログイン後 商品一覧、会員一覧、注文履歴一覧、ジャンル一覧、ログアウト %>
+    <%# 検索機能実装 %>
       <div class="container">
           <div class="logo-image">
              <%= link_to root_path do %>
                <%= image_tag "logo.jpg" %>
              <% end %>
           </div>
-          <div class="header-right row col-xs-offset-5">
+          <div class="header-right row col-xs-offset-3 col-xs-12">
             <%= link_to '商品一覧', admin_items_path, class: "btn btn-primary" %>
             <%= link_to '会員一覧', admin_members_path, class: "btn btn-primary" %>
             <%= link_to '注文履歴一覧', admin_orders_path, class: "btn btn-primary" %>
             <%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-primary" %>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-primary" %>
+            <div class="container">
+              <div class="row">
+               <%= form_tag(search_path, method: :get) do %>
+                  <%= select_tag 'search[model]', options_for_select({"会員" => "member", "商品" => "item"}) %>
+                  <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+                  <%= text_field_tag 'search[content]' %>
+                  <%= submit_tag '検索' %>
+                <% end %>
+              </div>
+            </div>
           </div>
       </div>  
       <% elsif member_signed_in? %>
@@ -44,7 +55,6 @@
       </div>
       <% else %>
     <%# 顧客ログイン前 About、商品一覧、新規登録、ログイン（管理者ログイン前も）%>
-    <%# 検索機能実装 %>
       <div class="container">
           <div class="logo-image">
              <%= link_to root_path do %>
@@ -56,11 +66,6 @@
           <%= link_to '商品一覧', items_path, class: "btn btn-primary" %>
           <%= link_to '新規登録', new_member_registration_path, class: "btn btn-primary" %>
           <%= link_to 'ログイン', new_member_session_path, class: "btn btn-primary" %>
-          <%# <%= form_tag(search_path, method: :get) do %> %>
-            <%# <%= text_field_tag (:word) %> %>
-            <%# <%= select_tag 'range', options_for_select([['会員','1'],['商品','2'],['ジャンル','3']]) %> %>
-            <%# <%= submit_tag 'Search' %> %>
-          <%# <% end %> %>
         </div>
       </div>
   <% end %>

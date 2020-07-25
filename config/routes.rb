@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
     get '/homes/top' => 'homes#top'
   end
 
+  get 'search' => 'search#search'
   get '/members/:member_id/about' => 'orders#about', as: 'order_about' 
   post '/members/:member_id' => 'orders#create', as: 'order_create'
   get '/members/:member_id/completion' => 'orders#completion', as: 'member_order_completion' 
