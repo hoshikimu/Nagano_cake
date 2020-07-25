@@ -15,15 +15,22 @@ class ShippingAddressesController < ApplicationController
     @member = Member.find(params[:member_id])
     @shipping = ShippingAddress.new(shipping_params)
     @shipping.member_id = current_member.id
-    @shipping.save
-    redirect_to member_shipping_addresses_path
+    if @shipping.save
+      redirect_to member_shipping_addresses_path
+    else
+      render :index
+    end
   end
 
   def update
     @member = Member.find(params[:member_id])
     @shipping = ShippingAddress.find(params[:id])
-    ShippingAddress.find_by(id: params[:id], member_id: params[:member_id]).update(shipping_params)
-    redirect_to member_shipping_addresses_path
+    @shipping_update = ShippingAddress.find_by(id: params[:id], member_id: params[:member_id])
+    if @shipping_update.update(shipping_params)
+      redirect_to member_shipping_addresses_path
+    else
+      render :edit
+    end
   end
 
   def destroy
