@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   def index
-    @cart_item = CartItem.find(params[:member_id])
+    @cart_item = CartItem.new
     @cart_items = CartItem.all
     @total = 0
     @tax = 1.1
@@ -11,13 +11,11 @@ class CartItemsController < ApplicationController
   def create
     cart_item = CartItem.new(cart_item_params)
     cart_item.member_id = current_member.id
-    if cart_item.save
-      respond_to do |format|
-        format.html { redirect_to item_path(cart_item.item_id), notice: "カートに保存されました。" }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to item_path(cart_item.item_id), notice: "1個以上を選択して下さい。" }
+    respond_to do |format|
+      if cart_item.save
+          format.html { redirect_to item_path(cart_item.item_id), notice: "カートに保存されました。" }
+      else
+          format.html { redirect_to item_path(cart_item.item_id), notice: "1個以上を選択して下さい。" }
       end
     end
   end
