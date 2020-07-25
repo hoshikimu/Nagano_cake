@@ -16,7 +16,7 @@ class MembersController < ApplicationController
       redirect_to member_path(@member)
     else
       @member= Member.find(params[:id])
-      render :edit
+      render :show
     end
   end
 

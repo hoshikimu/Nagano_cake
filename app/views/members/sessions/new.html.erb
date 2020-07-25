@@ -4,6 +4,7 @@
   <div class="row">
     <h3 class="sign-in-title">会員の方はこちらからログイン</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "members/shared/error_messages", resource: resource %>
       <table class="col-xs-5">
         <tr>
           <th>メールアドレス</th>

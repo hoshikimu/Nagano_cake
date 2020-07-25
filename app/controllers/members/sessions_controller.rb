@@ -31,6 +31,7 @@ class Members::SessionsController < Devise::SessionsController
       end
     else
       flash[:error] = "必須項目を入力してください。"
+      render :new
     end
   end
 
