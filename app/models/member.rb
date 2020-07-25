@@ -8,11 +8,11 @@ class Member < ApplicationRecord
   has_many :orders, dependent: :destroy
 
 # バリデーション
+validates :email, presence: true
 validates :name_family, presence: true
 validates :name_first, presence: true
-validates :name_family_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/
 validates :name_first_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/
-validates :email, presence: true
+validates :name_family_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/
 
 # numericality => only_integerで整数のみ、
 # ０以上１０未満のみ
