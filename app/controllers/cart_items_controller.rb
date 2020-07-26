@@ -10,7 +10,6 @@ class CartItemsController < ApplicationController
 
   def create
     cart_item = CartItem.new(cart_item_params)
-    cart_item.member_id = current_member.id
     respond_to do |format|
       if cart_item.save
           format.html { redirect_to item_path(cart_item.item_id), notice: "カートに保存されました。" }
@@ -47,7 +46,7 @@ class CartItemsController < ApplicationController
 
   private
   def cart_item_params    
-    params.require(:cart_item).permit(:quantity, :item_id)
+    params.require(:cart_item).permit(:quantity, :item_id).merge(member_id: current_member.id)
   end
 
 end
