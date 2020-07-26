@@ -50,16 +50,21 @@ class OrdersController < ApplicationController
       @address = params[:address]
       @receiver = params[:name_family] + params[:name_first]
     when "b"
-      @shipping_address_id = params[:shipping_address]
-      @postal_code = @member.shipping_addresses.find(@shipping_address_id).postal_code
-      @address = @member.shipping_addresses.find(@shipping_address_id).address
-      @receiver = @member.shipping_addresses.find(@shipping_address_id).receiver
+      shipping_address_id = params[:shipping_address]
+      if shipping_address_id == nil
+        flash[:danger] = "お届け先が未記入です。"
+        render :new
+      else
+        @postal_code = @member.shipping_addresses.find(shipping_address_id).postal_code
+        @address = @member.shipping_addresses.find(shipping_address_id).address
+        @receiver = @member.shipping_addresses.find(shipping_address_id).receiver
+      end
     when "c"
       @postal_code = params[:p]
       @address = params[:a]
       @receiver = params[:r]
     end
-    if @postal_code == nil || @address == nil || @receiver == nil || @shipping_address_id == nil
+    if @postal_code == nil || @address == nil || @receiver == nil
       flash[:danger] = "お届け先が未記入です。"
       render :new
     end
