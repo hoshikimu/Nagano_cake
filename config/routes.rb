@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resources :members do
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_all_item'
-    resources :orders
-    resources :order_items
+    resources :orders do
+      resources :order_items
+    end
     resources :shipping_addresses
   end
   put "/members/:id/hide" => "members#hide", as: 'member_hide'
