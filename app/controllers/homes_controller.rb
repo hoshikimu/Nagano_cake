@@ -8,4 +8,13 @@ class HomesController < ApplicationController
   def about
     
   end
+
+  def redirect
+
+  end
+
+  def contact_form
+
+  end
+
 end

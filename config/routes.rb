@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   
   root 'homes#top'
   get '/about' => 'homes#about'
+  get '/redirect' => 'homes#redirect'
+  get '/contact-form' => 'homes#contact_form'
   
   namespace :admin do 
     resources :genres
