@@ -10,7 +10,7 @@ class HomesController < ApplicationController
   end
 
   def redirect
-
+    @id = params[:member_id]  #redirect前に入力された値
   end
 
   def contact_form

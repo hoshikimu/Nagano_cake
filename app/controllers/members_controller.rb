@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
 
   before_action :authenticate_member!
-  before_action :set_current_member, except: :withdrawal
+  before_action :current_member?
 
   def show
     @member = Member.find(params[:id])
@@ -43,13 +43,6 @@ class MembersController < ApplicationController
       :phone_number,
       :email
     )
-  end
-
-  def set_current_member
-  member = Member.find(params[:id])
-    unless member.id == current_member.id
-    redirect_to items_path
-    end
   end
 
 end

@@ -1,13 +1,12 @@
 class CartItemsController < ApplicationController
+
+  before_action :current_member?
+
   def index
     @cart_item = CartItem.new
     @total = 0
     @tax = 1.1
     @cart_item_member = CartItem.where(member_id: current_member.id)
-    member = Member.find(params[:member_id])
-    unless member.id == current_member.id
-      redirect_to member_cart_items_path(current_member)
-    end
   end
 
   def create
