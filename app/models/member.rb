@@ -11,8 +11,8 @@ class Member < ApplicationRecord
 validates :email, presence: true
 validates :name_family, presence: true
 validates :name_first, presence: true
-validates :name_first_kana, presence: true,  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
-validates :name_family_kana, presence: true,  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+validates :name_first_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
+validates :name_family_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
 
 # numericality => only_integerで整数のみ、
 # ０以上１０未満のみ

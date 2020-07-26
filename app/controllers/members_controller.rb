@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
 
   before_action :authenticate_member!
+  before_action :set_current_member, except: :withdrawal
 
   def show
     @member = Member.find(params[:id])
@@ -13,10 +14,9 @@ class MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to member_path(@member)
+       redirect_to member_path(@member)
     else
-      @member= Member.find(params[:id])
-      render :show
+       render :edit
     end
   end
 
@@ -32,17 +32,24 @@ class MembersController < ApplicationController
 
   private
 
-def member_params
-  params.require(:member).permit(
-    :name_family,
-    :name_first,
-    :name_family_kana,
-    :name_first_kana,
-    :postal_code,
-    :address,
-    :phone_number,
-    :email
-  )
-end
+  def member_params
+    params.require(:member).permit(
+      :name_family,
+      :name_first,
+      :name_family_kana,
+      :name_first_kana,
+      :postal_code,
+      :address,
+      :phone_number,
+      :email
+    )
+  end
+
+  def set_current_member
+  member = Member.find(params[:id])
+    unless member.id == current_member.id
+    redirect_to items_path
+    end
+  end
 
 end

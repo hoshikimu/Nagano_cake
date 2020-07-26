@@ -30,8 +30,7 @@ class Members::SessionsController < Devise::SessionsController
         redirect_to new_member_session_path
       end
     else
-      flash[:error] = "必須項目を入力してください。"
-      render :new
+      flash[:error] = "入力内容を再確認してください。"
     end
   end
 
