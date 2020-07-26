@@ -36,7 +36,7 @@
               </td>
               <td><%= (cart_item.item.price * @tax).round.to_s(:delimited) %> 円</td>
                 <td>
-                  <%= form_for [@member, cart_item], html: {class: "cart-item-form"} do |f| %>
+                  <%= form_with(model:[@member, cart_item], local: true) do |f| %>
                     <%= f.number_field :quantity, min: 0 %>
                     <%= f.submit '変更', class: "btn btn-primary" %>
                   <% end %>
