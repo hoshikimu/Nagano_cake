@@ -19,7 +19,8 @@ class ItemsController < ApplicationController
   def genre
     @genre = Genre.find(params[:genre_id])
     @genre_items = @genre.items.where(is_sale_status: true).page(params[:page]).per(12)
-    @genres = Genre.all
+    @genres = Genre.where(is_invalid_flag: true).page(params[:page]).per(5)
+
   end
 
 end

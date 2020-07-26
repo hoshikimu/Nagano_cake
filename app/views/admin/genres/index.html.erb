@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-xs-4">
     <%= form_for(@genre, url: admin_genres_path, method: :post) do |f| %>
       <%= f.label :ジャンル %>
       <%= f.text_field :name %>
@@ -23,13 +23,13 @@
   	</div>
   </div>
   <div class="row">
-  <div class="col-xs-4">
+  <div class="col-xs-10">
   <div class="table-responsive">
-	<table class="table">
-  　  <thead>
-    　  <tr>
+	<table class="table genre-index-table">
+     <thead>
+       <tr>
           <th>ジャンル</th>
-          <th>状態</th>
+          <th class="col-xs-1">状態</th>
           <th colspan="1"></th>
         </tr>
       </thead>
@@ -49,7 +49,8 @@
           	<% end %>
           </td>
           <td>
-          	<%= link_to "編集する", edit_admin_genre_path(genre),class: "btn btn-large btn-primary edit-btn"  %> </td>
+          	<%= link_to "編集する", edit_admin_genre_path(genre),class: "btn btn-large btn-primary edit-btn"  %> 
+          </td>
         </tr>
         <% end %>
     <!-- each -->

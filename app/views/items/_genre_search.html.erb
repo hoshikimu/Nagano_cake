@@ -1,18 +1,15 @@
-<table class="homes-top-genre-search">
-  <thead>
-    <tr class="homes-top-genre-title">
-      <td>ジャンル検索</td>
-    </tr>
-  </thead>
-  <% @genres.each do |genre| %>
-    <tbody>
-      <tr>
-        <td class="homes-top-genre-text">
-          <%= link_to genre_item_path(genre) do %>
+<div class="homes-top-genre-search">
+  <div>
+    <h3 class="homes-top-genre-title">ジャンル検索</h3>
+    <% genres.each do |genre| %>
+      <ul class="homes-top-genre-text">
+        <%= link_to genre_item_path(genre) do %>
+          <li>
             <%= genre.name %>
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
-</table>
+      <%= paginate genres %>
+  </div>
+</div>
