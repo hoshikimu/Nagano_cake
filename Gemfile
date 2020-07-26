@@ -76,7 +76,3 @@ gem 'pry-byebug'
 gem 'faker'
 
 gem 'rails-i18n'
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
