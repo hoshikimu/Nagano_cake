@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
   def new
 
     @order_new = Order.new
+    @order = Order.new
     @member = Member.find(current_member.id)
     @member_shipping_addresses = @member.shipping_addresses
 
@@ -36,8 +37,8 @@ class OrdersController < ApplicationController
   end
 
   def about
-    @order_new = Order.new
     @order = Order.new
+    @order.order_items.build
     @total = 0
     @shipping_cost = 800
     @cart_items_member = CartItem.where(member_id: current_member.id)
@@ -59,35 +60,42 @@ class OrdersController < ApplicationController
       @address = params[:address]
       @receiver = params[:name_family] + params[:name_first]
     when "b"
-      if @shipping_addresses_id == nil
-        @member = Member.find(current_member.id)
-        @member_shipping_addresses = @member.shipping_addresses
-        flash[:danger] = "登録済みの住所がありません。"
-        render :new
-      else
-        @shipping_address_id = params[:shipping_address]
-        @postal_code = @member.shipping_addresses.find(@shipping_address_id).postal_code
-        @address = @member.shipping_addresses.find(@shipping_address_id).address
-        @receiver = @member.shipping_addresses.find(@shipping_address_id).receiver
-      end
-    when "c"
-      if @postal_code == nil || @address == nil || @receiver == nil
-        @member = Member.find(current_member.id)
-        @member_shipping_addresses = @member.shipping_addresses
+      shipping_address_id = params[:shipping_address]
+      if shipping_address_id == nil
         flash[:danger] = "お届け先が未記入です。"
         render :new
       else
-        @postal_code = params[:p]
-        @address = params[:a]
-        @receiver = params[:r]
+        @postal_code = @member.shipping_addresses.find(shipping_address_id).postal_code
+        @address = @member.shipping_addresses.find(shipping_address_id).address
+        @receiver = @member.shipping_addresses.find(shipping_address_id).receiver
       end
+    when "c"
+      @postal_code = params[:p]
+      @address = params[:a]
+      @receiver = params[:r]
     end
+    if @postal_code == nil || @address == nil || @receiver == nil
+      flash[:danger] = "お届け先が未記入です。"
+      render :new
+    end
+
   end
 
   def create
-    @order_new = Order.new(order_params)
-    @order_new.member_id = current_member.id
-    if @order_new.save
+    @order = Order.new(order_params)
+    @order.member_id = current_member.id
+    @cart_items_member = current_member.cart_items
+    @tax = 1.1
+    if @order.save
+      @cart_items_member.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
+        @order_item.item_id = cart_item.id
+        @order_item.quantity = cart_item.quantity
+        @order_item.tax_included_price = (cart_item.item.price * @tax).floor.to_s(:delimited)
+        @order_item.production_status = 0
+        @order_item.save
+      end
       redirect_to member_order_completion_path
     else
       @member = Member.find(current_member.id)
