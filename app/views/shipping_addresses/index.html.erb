@@ -2,7 +2,7 @@
   <div class="shipping-container">
     <div id="error_explanation">
       <% if @shipping.errors.any? %>
-        <h3><%= @shipping.errors.count %>件のerrorが発生しました</h3>
+        <h3><%= @shipping.errors.count %>件のエラーが発生しました</h3>
         <ul>
           <% @shipping.errors.full_messages.each do |message| %>
             <li><%= message %></li>
