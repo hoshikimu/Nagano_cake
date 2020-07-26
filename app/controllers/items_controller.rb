@@ -8,7 +8,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item_tax_included_price = (@item.price * 1.1).floor
     @genres = Genre.all
-    @member = Member.find(current_member.id)
+    if member_signed_in?
+      @member = Member.find(current_member.id)
+    end
     @cart_item = CartItem.new
   end
 

@@ -4,8 +4,8 @@
     <div class="col-xs-4 col-xs-offet-1">
      	<h3>注文情報入力</h3>
       <div class="order-notice"><%= flash[:danger] %></div>
-      <% if @order_new.errors.any? %>
-        <% @order_new.errors.full_messages.each do |message| %>
+      <% if @order.errors.any? %>
+        <% @order.errors.full_messages.each do |message| %>
           <li class="text-danger"><%= message %></li>
         <% end %>
       <% end %>
