@@ -27,11 +27,9 @@
               	住所<%= order.address %><br>
           	    宛名<%= order.receiver %>
           	  </td>
-          	<!-- <% @order_items.each do |order_item| %> -->
-              <td><%= order_item.name.all %></td>
-            <!-- <% end %> -->
+          	
               <td><%= order.total %></td>
-              <td><%= order.production_status %></td>
+              
               <td><%= link_to "表示する", member_order_path(order), class:"btn btn-primary" %></td>
             </tr>
           </tbody>
