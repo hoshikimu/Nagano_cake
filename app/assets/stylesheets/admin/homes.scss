@@ -10,6 +10,8 @@
 
 .homes-top-genre-search {
   border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
 }
 
 .homes-top-genre-title {
@@ -19,6 +21,11 @@
 
 .homes-top-genre-text {
   padding: 15px;
+  width: 200px;
+  flex: wrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .homes-top-image {
