@@ -15,7 +15,7 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.page(params[:page]).reverse_order
     @order_items =OrderItem.all
     @total_quantity = 0
-
+    # @time = Order.created_at.strftime("%Y/%m/%d %H:%M:%S")
   end
 
   def show
