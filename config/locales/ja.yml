@@ -8,6 +8,7 @@ ja:
       order_item: 注文商品
       order: 注文
       shipping_address: 配送先
+      
     attributes:
       member:
         name_family: 姓
