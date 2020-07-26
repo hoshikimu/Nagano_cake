@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     @order_items = OrderItem.all
     @total = 0
     @postage = 800
+    @time = Order.find(params[:member_id]).created_at.strftime("%Y/%m/%d")
   end
 
   def show
