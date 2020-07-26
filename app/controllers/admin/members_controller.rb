@@ -19,7 +19,6 @@ class Admin::MembersController < ApplicationController
     if @member.update(member_params)
       redirect_to admin_members_path
     else
-      @member= Member.find(params[:id])
       render :edit
     end
   end

@@ -2,6 +2,16 @@
 
 <div class="edit-member-info container">
   <div class="row">
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2 style="color: red;"><%= @member.errors.count %>件のエラーが発生しました</h2>
+      <ul style="color: red;">
+        <% @member.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <h2><%= @member.name_family %><%= @member.name_first %>さんの登録情報編集</h2>
     <%= form_for(@member, url: admin_member_path ) do |f| %>
       <div class="col-xs-8">
