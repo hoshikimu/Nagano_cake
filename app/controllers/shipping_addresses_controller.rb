@@ -6,6 +6,7 @@ class ShippingAddressesController < ApplicationController
   end
 
   def edit
+    @shipping_update = ShippingAddress.find_by(id: params[:id], member_id: params[:member_id])
     @shipping = ShippingAddress.find(params[:id])
     @shippings = ShippingAddress.all
     @member = Member.find(params[:member_id])
