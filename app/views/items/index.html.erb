@@ -1,7 +1,7 @@
 <div class="container item-index-wrapper">
   <div class="row">
-      <%= render "items/genre_search", genres: @genres %>
-    <div class="col-xs-7">
+    <%= render "items/genre_search", genres: @genres %>
+    <div class="col-xs-9 col-xs-offset-3">
       <h2>商品一覧（全<%= @items.count %>件）</h2>
       <div class="items">
         <% @items.each do |item| %>

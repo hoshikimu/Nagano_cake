@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.where(is_sale_status: true).page(params[:page]).per(12)
-    @genres = Genre.all
+    @genres = Genre.where(is_invalid_flag: true).page(params[:page]).per(5)
   end
 
   def show
