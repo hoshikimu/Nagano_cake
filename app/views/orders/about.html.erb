@@ -22,11 +22,11 @@
             <td><%= (cart_item.item.price * @tax).floor.to_s(:delimited) %> 円</td>
             <td><%= cart_item.quantity %> 個</td>
             <td>
-              <% sub_total = cart_item.item.price * cart_item.quantity %>
-              <%= sub_total.to_s(:delimited) %> 円
+              <% sub_total = cart_item.item.price * @tax *cart_item.quantity %>
+              <%= sub_total.floor.to_s(:delimited) %> 円
             </td>
           </tr>
-          <% @total = @total + cart_item.item.price * cart_item.quantity %>
+          <% @total = @total + cart_item.item.price *  @tax *cart_item.quantity %>
         <% end %>
       </tbody>
     </table>
@@ -42,11 +42,11 @@
           </tr>
           <tr>
             <td>商品合計</td>
-            <td><%= @total.to_s(:delimited) %> 円</td>
+            <td><%= @total.floor.to_s(:delimited) %> 円</td>
           </tr>
           <tr>
             <td>請求金額</td>
-            <td><%= (@total + @shipping_cost).to_s(:delimited) %> 円</td>
+            <td><%= (@total + @shipping_cost).floor.to_s(:delimited) %> 円</td>
           </tr>
         </tbody>
       </table>

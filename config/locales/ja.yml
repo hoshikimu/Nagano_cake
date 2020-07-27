@@ -20,6 +20,7 @@ ja:
         email: メールアドレス
         address: 住所
         password: パスワード
+
         current_password: 現在のパスワード
         is_withdrawal_flag: 会員ステータス
       
@@ -62,3 +63,4 @@ ja:
         postal_code: 郵便番号
         address: 住所
         receiver: 宛名
+
