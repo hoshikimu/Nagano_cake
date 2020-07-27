@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
   before_action :current_member?
   before_action :destroy_all, only: [:completion]
+  @@button_selected = ""
 
   def index
     @member = Member.find(params[:member_id])
@@ -55,8 +56,8 @@ class OrdersController < ApplicationController
       @payment_method = "クレジットカード"
     end
 
-    button_selected = params[:selected]
-    case button_selected
+    @@button_selected = params[:selected]
+    case @@button_selected
     when "a"
       @postal_code = params[:postal_code]
       @address = params[:address]
@@ -90,6 +91,7 @@ class OrdersController < ApplicationController
     @order.member_id = current_member.id
     @cart_items_member = current_member.cart_items
     @tax = 1.1
+
     if @order.save
       @cart_items_member.each do |cart_item|
         @order_item = OrderItem.new
@@ -100,6 +102,16 @@ class OrdersController < ApplicationController
         @order_item.production_status = 0
         @order_item.save
       end
+
+      if @@button_selected == "c"
+        @shipping_address = ShippingAddress.new
+        @shipping_address.member_id = params[:member_id]
+        @shipping_address.postal_code = @order.postal_code
+        @shipping_address.address = @order.address
+        @shipping_address.receiver = @order.receiver
+        @shipping_address.save
+      end
+
       redirect_to member_order_completion_path
     else
       @member = Member.find(current_member.id)
