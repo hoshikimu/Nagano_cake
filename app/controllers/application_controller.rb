@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters,
    if: :devise_controller?
+
+  def current_member?
+    member_id = params[:member_id]
+    id = params[:id]
+    unless member_id == current_member.id.to_s || id == current_member.id.to_s
+      id = "#{params[:member_id]}" + "#{params[:id]}"
+      redirect_to redirect_path(member_id: id)  #redirect先に入力されたIDを渡す
+    end
+  end
   
 # ログイン後の遷移先を管理者と顧客で場合わけ
   def after_sign_in_path_for(resource)

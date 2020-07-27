@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+  before_action :current_member?
   before_action :destroy_all, only: [:completion]
 
   def index

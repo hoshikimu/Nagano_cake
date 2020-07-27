@@ -1,4 +1,7 @@
 class ShippingAddressesController < ApplicationController
+
+  before_action :current_member?
+
   def index
     @shipping = ShippingAddress.new
     @shippings = ShippingAddress.all
