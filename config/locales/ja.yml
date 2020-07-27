@@ -2,6 +2,13 @@ ja:
   activerecord:
     models:
       member: 会員
+      cart_item: カート
+      genre: ジャンル
+      item: 商品
+      order_item: 注文商品
+      order: 注文
+      shipping_address: 配送先
+      
     attributes:
       member:
         name_family: 姓
@@ -13,3 +20,47 @@ ja:
         email: メールアドレス
         address: 住所
         password: パスワード
+
+        current_password: 現在のパスワード
+        is_withdrawal_flag: 会員ステータス
+      
+      cart_item:
+        member_id: 会員情報
+        item_id: 商品情報
+        quantity: 数量
+
+      genre:
+        name: ジャンル名
+        is_invalid_flag: ジャンルステータス
+
+      item:
+        genre_id: ジャンル情報
+        name: 商品名
+        introduction: 商品説明
+        image_id: 商品画像
+        price: 価格
+        is_sale_status: 商品ステータス
+        
+      order_item:
+        order_id: 注文情報
+        item_id: 商品情報
+        tax_included_price: 税込価格
+        quantity: 数量
+        production_status: 製作ステータス
+
+      order:
+        member_id: 会員情報
+        postal_code: 郵便番号
+        receiver: 宛名
+        address: 住所
+        postage: 送料
+        payment_method: お支払い方法
+        total: 請求合計金額
+        order_status: 注文ステータス
+
+      shipping_address:
+        member_id: 会員情報
+        postal_code: 郵便番号
+        address: 住所
+        receiver: 宛名
+

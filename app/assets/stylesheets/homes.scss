@@ -4,6 +4,65 @@
 
 
 // 顧客用トップページCSS
+
+.homes-top-box {
+  width: 23%;
+  flex: wrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.homes-top-wrapper {
+  margin-top: 40px;
+}
+
+.homes-top-genre-search {
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 200px;
+}
+
+.homes-top-genre-title {
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+}
+
+.homes-top-genre-text {
+  padding: 5px 10px;
+  // width: 200px;
+  flex: wrap;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
+  list-style: none;
+  word-break: break-all;
+}
+
+.homes-top-image {
+  border: 1px solid #000;
+  height: 400px;
+  background:  linear-gradient( 135deg,
+  rgba(246, 255, 0, 0.3), rgba(255, 0, 161, 0.3)), image-url('top-image2.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 7px;
+}
+
+.homes-top-text {
+  height: 200px;
+  margin-top: 100px;
+  padding: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  font-family: oblique;
+}
+
 .homes-top-under-menu-title {
   margin-top: 15px;
 }
@@ -13,13 +72,21 @@
   justify-content: space-evenly;
   margin-top: 20px;
 }
+.homes-top-under-menu > h2 {
+  font-weight: bold;
+}
 
-.homes-box {
-  width: 23%;
-  flex: wrap;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+// .homes-top-under-image {
+  //   border: 4px solid orange;
+  // }
+  
+  .homes-top-under-text {
+    height: 40px;
+    text-align: center;
+  }
+
+.homes-top-under-image :hover {
+  opacity: 0.8;
 }
 
 // 顧客AboutページCSS
