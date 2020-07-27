@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_tax_included_price = (@item.price * 1.1).floor
-    @genres = Genre.all
+    @genres = Genre.where(is_invalid_flag: true).page(params[:page]).per(5)
     if member_signed_in?
       @member = Member.find(current_member.id)
     end
