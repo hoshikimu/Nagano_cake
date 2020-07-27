@@ -18,10 +18,10 @@
             <%= f.submit "カートに入れる", class:"btn btn-primary" %>
           <% end %>
         </div>
-        <div><p><%= notice %></p></div>
+        <div><p><%#%= notice %></p></div>
         <div class="items-btn-area">
-          <div><%= link_to '買い物を続ける', items_path, class: 'btn btn-primary'  %></div>
-          <div><%= link_to 'カートを確認する', member_cart_items_path(@member), class: 'btn btn-success'%></div>
+          <div><%#= link_to '買い物を続ける', items_path, class: 'btn btn-primary'  %></div>
+          <div><%#= link_to 'カートを確認する', member_cart_items_path(@member), class: 'btn btn-success'%></div>
         </div>
       <% else %>
         <p>商品を購入するには、会員登録が必要です。</p>
