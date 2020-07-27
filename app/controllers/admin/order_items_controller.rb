@@ -1,6 +1,20 @@
 class Admin::OrderItemsController < ApplicationController
   def update
+  @order = Order.find(params[:order_item][:order_id])
   @order_item = OrderItem.find(params[:id])
+    if params[:order_item][:production_status] == "製作中"
+      @order.order_status = "製作中"
+      @order.save(order_item_params)
+
+    elsif params[:order_item][:production_status] == "製作完了"
+ # 製作完了じゃないデータを取り出す
+      @production = @order.order_items.where.not(production_status: "製作完了")
+     # 製作完了のデータのみだったら
+       if !@production.any?
+        @order.order_status = "発送準備中"
+        @order.save(order_item_params)
+      end
+    end
   @order_item.update(order_item_params)
    flash[:notice] = "製作ステータスを更新しました！"
   redirect_to request.referer
