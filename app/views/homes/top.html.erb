@@ -25,27 +25,27 @@
 </div>
 <div class="homes-top-under-menu col-xs-8 col-xs-offset-3">
   <% @items.each do |item| %>
-  <div class="homes-top-box">
-    <table>
-      <thead>
-        <tr>
-          <td class="homes-top-under-image">
-            <%= link_to items_path do %>
-              <%= attachment_image_tag item, :image, :fill, 250, 150, fallback: "no_image.jpg", size:'205x140' %>
-            <% end %>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="homes-top-under-text">
-          <td class="homes-name-wrap"><%= item.name %></td>
-        </tr>
-        <tr class="homes-top-under-text">
-          <td>￥<%= item.price %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="homes-top-box">
+      <table>
+        <thead>
+          <tr>
+            <td class="homes-top-under-image">
+              <%= link_to item_path(item) do %>
+                <%= attachment_image_tag item, :image, :fill, 250, 150, fallback: "no_image.jpg", size:'205x140' %>
+              <% end %>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="homes-top-under-text">
+            <td class="homes-name-wrap"><%= item.name %></td>
+          </tr>
+          <tr class="homes-top-under-text">
+            <td>￥<%= item.price %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   <% end %>
 </div>
 <div class="col-xs-1 col-xs-offset-10">
