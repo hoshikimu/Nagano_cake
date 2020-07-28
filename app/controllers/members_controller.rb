@@ -27,7 +27,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.update(is_withdrawal_flag: false)
     reset_session
-    redirect_to items_path
+    redirect_to root_path
   end
 
   private
