@@ -15,22 +15,6 @@
         <label for="name">商品画像</label>
         <%= f.attachment_field :image, id:"file" %>
         <div id="result"></div>
-        <script>
-          $(function(){
-            $('#file').change(function(){
-              // $('img').remove();
-              var file = $(this).prop('files')[0];
-              if(!file.type.match('image.*')){
-                  return;
-              }
-              var fileReader = new FileReader();
-              fileReader.onloadend = function() {
-                  $('#result').html('<img src="' + fileReader.result + '" width="300" height="200">');
-              }
-              fileReader.readAsDataURL(file);
-            });
-          });
-        </script>
       </div>
     </div>
     <div class="col-xs-4">
@@ -60,14 +44,3 @@
     </div>
   <% end %>
 </div>
-<script>
-  $(function(){
-      $("#item_price").change(function(){
-          var str = $(this).val();
-          str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
-              return String.fromCharCode(s.charCodeAt(0) - 65248);
-          });
-          $(this).val(str);
-      }).change();
-  });
-</script>

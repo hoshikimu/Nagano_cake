@@ -24,14 +24,3 @@
     </table>
   <% end %>
 </div>
-<script>
-  $(function(){
-      $("#shipping_address_postal_code").change(function(){
-          var str = $(this).val();
-          str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
-              return String.fromCharCode(s.charCodeAt(0) - 65248);
-          });
-          $(this).val(str);
-      }).change();
-  });
-</script>

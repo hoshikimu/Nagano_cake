@@ -15,3 +15,49 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+//フォームの全角英数字をフォーカスアウトで半角英数字に変換
+$(function(){
+  $("#shipping_address_postal_code").change(function(){
+    var str = $(this).val();
+    str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
+      return String.fromCharCode(s.charCodeAt(0) - 65248);
+    });
+    $(this).val(str);
+  }).change();
+});
+
+$(function(){
+  $("#member_postal_code,#member_phone_number").change(function(){
+    var str = $(this).val();
+    str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
+      return String.fromCharCode(s.charCodeAt(0) - 65248);
+    });
+    $(this).val(str);
+  }).change();
+});
+
+$(function(){
+  $("#item_price").change(function(){
+    var str = $(this).val();
+    str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
+      return String.fromCharCode(s.charCodeAt(0) - 65248);
+    });
+    $(this).val(str);
+  }).change();
+});
+
+//商品登録、編集画面に画像プレビューを表示
+$(function(){
+  $('#file').change(function(){
+    var file = $(this).prop('files')[0];
+    if(!file.type.match('image.*')){
+      return;
+    }
+    var fileReader = new FileReader();
+    fileReader.onloadend = function() {
+      $('#result').html('<img src="' + fileReader.result + '" width="300" height="200">');
+    }
+    fileReader.readAsDataURL(file);
+  });
+});
