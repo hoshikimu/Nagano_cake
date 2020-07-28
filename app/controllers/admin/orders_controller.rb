@@ -5,7 +5,6 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order_item =OrderItem.find(params[:id])
     @order_items = @order.order_items
       if params[:order][:order_status] == "入金確認"
           @order_items.each do |order_item|
@@ -15,7 +14,7 @@ class Admin::OrdersController < ApplicationController
       end
 
     @order.update(order_params)
-     flash[:notice] = "注文ステータスを更新しました！"
+     flash[:success] = "注文ステータスを更新しました！"
     redirect_to request.referer
   end
 

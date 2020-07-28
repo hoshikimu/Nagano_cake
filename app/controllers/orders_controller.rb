@@ -2,15 +2,15 @@ class OrdersController < ApplicationController
 
   before_action :current_member?
   before_action :destroy_all, only: [:completion]
+  @@button_selected = ""
 
   def index
     @member = Member.find(params[:member_id])
     @orders = @member.orders
-    # @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page]).reverse_order.per(5)
     @order_items = OrderItem.all
     @total = 0
     @postage = 800
-    @time = Order.find(params[:member_id]).created_at.strftime("%Y/%m/%d")
   end
 
   def show
@@ -35,7 +35,6 @@ class OrdersController < ApplicationController
 
 
   def confirm
-    
   end
 
   def about
@@ -55,8 +54,8 @@ class OrdersController < ApplicationController
       @payment_method = "クレジットカード"
     end
 
-    button_selected = params[:selected]
-    case button_selected
+    @@button_selected = params[:selected]
+    case @@button_selected
     when "a"
       @postal_code = params[:postal_code]
       @address = params[:address]
@@ -90,16 +89,27 @@ class OrdersController < ApplicationController
     @order.member_id = current_member.id
     @cart_items_member = current_member.cart_items
     @tax = 1.1
+
     if @order.save
       @cart_items_member.each do |cart_item|
         @order_item = OrderItem.new
         @order_item.order_id = @order.id
-        @order_item.item_id = cart_item.id
+        @order_item.item_id = cart_item.item.id
         @order_item.quantity = cart_item.quantity
         @order_item.tax_included_price = (cart_item.item.price * @tax).floor.to_s(:delimited)
         @order_item.production_status = 0
+
         @order_item.save
       end
+      if @@button_selected == "c"
+        @shipping_address = ShippingAddress.new
+        @shipping_address.member_id = params[:member_id]
+        @shipping_address.postal_code = @order.postal_code
+        @shipping_address.address = @order.address
+        @shipping_address.receiver = @order.receiver
+        @shipping_address.save
+      end
+
       redirect_to member_order_completion_path
     else
       @member = Member.find(current_member.id)
@@ -116,11 +126,6 @@ class OrdersController < ApplicationController
   # def order_params
   # 	params.require(:order).permit(:order_status, :postal_code, :receiver, :address, :postage, :payment_method, :total)private
   def order_params
-    params.require(:order).permit(:member_id, :order_status, :postal_code,
-     :receiver, :address, :postage, :payment_method, :total, :created_at, :updated_at,
-     order_items_attributes: [:order_id, :item_id, :quantity, :tax_inculuded_price, :production_status],
-     members_attributes: [:name_family, :name_first ])
-  
+    params.require(:order).permit(:order_status, :postal_code, :receiver, :address, :postage, :payment_method, :total)
   end
-
 end
