@@ -15,22 +15,6 @@
         <label for="name">商品画像</label>
         <%= f.attachment_field :image, id:"file" %>
         <div id="result"></div>
-        <script>
-          $(function(){
-            $('#file').change(function(){
-              // $('img').remove();
-              var file = $(this).prop('files')[0];
-              if(!file.type.match('image.*')){
-                  return;
-              }
-              var fileReader = new FileReader();
-              fileReader.onloadend = function() {
-                  $('#result').html('<img src="' + fileReader.result + '" width="300" height="200">');
-              }
-              fileReader.readAsDataURL(file);
-            });
-          });
-        </script>
       </div>
     </div>
     <div class="col-xs-4">

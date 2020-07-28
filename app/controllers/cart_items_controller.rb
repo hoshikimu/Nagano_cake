@@ -11,13 +11,11 @@ class CartItemsController < ApplicationController
 
   def create
     cart_item = CartItem.new(cart_item_params)
-    respond_to do |format|
       if cart_item.save
-          format.html { redirect_to item_path(cart_item.item_id), notice: "カートに保存されました。" }
+        redirect_to member_cart_items_path
       else
-          format.html { redirect_to item_path(cart_item.item_id), notice: "1個以上を選択して下さい。" }
+        redirect_to item_path(cart_item.item_id)
       end
-    end
   end
 
   def update
