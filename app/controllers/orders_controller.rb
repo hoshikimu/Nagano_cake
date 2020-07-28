@@ -35,7 +35,6 @@ class OrdersController < ApplicationController
 
 
   def confirm
-    
   end
 
   def about

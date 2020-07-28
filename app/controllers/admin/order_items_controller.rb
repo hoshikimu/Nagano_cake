@@ -16,7 +16,7 @@ class Admin::OrderItemsController < ApplicationController
       end
     end
   @order_item.update(order_item_params)
-   flash[:notice] = "製作ステータスを更新しました！"
+   flash[:success] = "製作ステータスを更新しました！"
   redirect_to request.referer
   end
 
