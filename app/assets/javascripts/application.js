@@ -18,27 +18,7 @@
 
 //フォームの全角英数字をフォーカスアウトで半角英数字に変換
 $(function(){
-  $("#shipping_address_postal_code").change(function(){
-    var str = $(this).val();
-    str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
-      return String.fromCharCode(s.charCodeAt(0) - 65248);
-    });
-    $(this).val(str);
-  }).change();
-});
-
-$(function(){
-  $("#member_postal_code,#member_phone_number").change(function(){
-    var str = $(this).val();
-    str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
-      return String.fromCharCode(s.charCodeAt(0) - 65248);
-    });
-    $(this).val(str);
-  }).change();
-});
-
-$(function(){
-  $("#item_price").change(function(){
+  $('[id*="postal_code"],[id*=phone_number],[id*=item_price]').change(function(){
     var str = $(this).val();
     str = str.replace( /[Ａ-Ｚａ-ｚ０-９－！”＃＄％＆’（）＝＜＞，．？＿［］｛｝＠＾～￥]/g, function(s) {
       return String.fromCharCode(s.charCodeAt(0) - 65248);
