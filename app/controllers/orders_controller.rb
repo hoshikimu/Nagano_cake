@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def index
     @member = Member.find(params[:member_id])
     @orders = @member.orders
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page]).reverse_order.per(5)
     @order_items = OrderItem.all
     @total = 0
     @postage = 800
@@ -35,7 +35,6 @@ class OrdersController < ApplicationController
 
 
   def confirm
-    
   end
 
   def about
@@ -124,6 +123,8 @@ class OrdersController < ApplicationController
   end
 
   private
+  # def order_params
+  # 	params.require(:order).permit(:order_status, :postal_code, :receiver, :address, :postage, :payment_method, :total)private
   def order_params
     params.require(:order).permit(:order_status, :postal_code, :receiver, :address, :postage, :payment_method, :total)
   end
