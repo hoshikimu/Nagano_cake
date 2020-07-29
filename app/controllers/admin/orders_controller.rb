@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.page(params[:page]).reverse_order
-    @order_items =OrderItem.all
+    @order_items = OrderItem.all
     @total_quantity = 0
   end
 
