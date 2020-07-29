@@ -13,7 +13,7 @@
       <%= form_with(url: order_about_path(@member), method: :get, local: true) do |f| %>
         <div class="form-group">
           <%= f.label :支払方法 %><br>
-          <%= f.select :payment_method, Order.payment_methods.keys.to_a, {}, class:"form-control" %> 
+          <%= f.select :payment_method, Order.payment_methods.keys.to_a, {}, class:"form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :お届け先 %><br>
