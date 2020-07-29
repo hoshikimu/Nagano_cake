@@ -1,9 +1,9 @@
 <!-- admin order show兼edit -->
 <div class="container">
   <div class="row">
-    <% if flash[:notice] %>
+    <% if flash[:success] %>
       <div class="flash">
-        <%= flash[:notice] %>
+        <%= flash[:success] %>
       </div>
     <% end %>
     <div class="col-xs-3 col-xs-offset-1">
@@ -76,7 +76,7 @@
                 <%= f.hidden_field :order_id, value: order_item.order_id %>
               	<%= f.submit "更新", class:"btn btn-primary" %>
               <% end %>
-              </td>
+            </td>
           </tr>
         </tbody>
         <% @total = @total + order_item.tax_included_price * order_item.quantity %>
