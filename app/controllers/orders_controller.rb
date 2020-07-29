@@ -6,8 +6,7 @@ class OrdersController < ApplicationController
 
   def index
     @member = Member.find(params[:member_id])
-    @orders = @member.orders
-    @orders = Order.page(params[:page]).reverse_order.per(5)
+    @orders = @member.orders.page(params[:page]).reverse_order
     @order_items = OrderItem.all
     @total = 0
     @postage = 800
