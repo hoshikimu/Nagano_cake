@@ -9,11 +9,11 @@
       <table class="col-xs-5">
         <tr>
           <th>メールアドレス</th>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-xs-12" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-xs-12", value: "demo@demo.com" %></td>
         </tr>
         <tr>
           <th>パスワード</th>
-          <td><%= f.password_field :password, autocomplete: "current-password",class: "col-xs-12" %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password",class: "col-xs-12", value: "112233" %></td>
         </tr>
         <tr>
           <td colspan="2"><%= f.submit 'ログイン', class: "btn btn-primary sign-in-button"%></td>
