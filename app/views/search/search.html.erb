@@ -7,16 +7,16 @@
 <% if @model == "member" %>
       <div class="container col-xs-6 col-xs-offset-3">
         <div class="row">
-           <% @records.each do |member| %>
-            <table class="table col-xs-8">
-              <thead>
-                <tr>
-                  <td>会員ID</td>
-                  <td>氏名</td>
-                  <td>メールアドレス</td>
-                  <td>ステータス</td>
-                </tr>
-              </thead>
+          <table class="table col-xs-8">
+            <thead>
+              <tr>
+                <td>会員ID</td>
+                <td>氏名</td>
+                <td>メールアドレス</td>
+                <td>ステータス</td>
+              </tr>
+            </thead>
+            <% @records.each do |member| %>
               <tbody>
                 <tr>
                   <td><%= member.id %></td>
@@ -34,8 +34,8 @@
                   <% end %>
                 </tr>
               </tbody>
-            </table>
-          <% end %>
+            <% end %>
+          </table>
         </div>
       </div>
 
