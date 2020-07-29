@@ -7,11 +7,10 @@ class OrdersController < ApplicationController
   def index
     @member = Member.find(params[:member_id])
     @orders = @member.orders
-    # @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page]).reverse_order
     @order_items = OrderItem.all
     @total = 0
     @postage = 800
-    # @time = Order.find(params[:member_id]).created_at.strftime("%Y/%m/%d")
   end
 
   def show
