@@ -36,7 +36,7 @@
               <tr>
                 <td>
                 	<br>
-                	<%= @time %>
+                	<%= order.created_at.strftime("%Y/%m/%d") %>
                 </td>
                 <td>
                   <%= order.postal_code %><br>
@@ -51,9 +51,11 @@
                   <% end %>
                 </td>
                 <td>
+                  <br>
                   <%= (@total + order.postage).floor.to_s(:delimited) %>
                 </td>
                 <td>
+                  <br>
                   <%= order.order_status %>
                 </td>
                 <td>
@@ -63,6 +65,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @orders %>
       </div>
   </div>
 </div>
