@@ -1,5 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
-    @orders = Order.all
+
+    @daily_order_counts = Order.where(created_at: Time.current.all_day)
+
   end
 end
