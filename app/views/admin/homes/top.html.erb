@@ -12,7 +12,7 @@
         <th class="admin-top-text col-xs-9">本日の注文件数</th>
         <td class="admin-top-count col-xs-9">
           <%= link_to admin_orders_path do %>
-            <%= @orders.count %>
+            <%= @daily_order_counts.count %>
           <% end %>
           件
         </td>
